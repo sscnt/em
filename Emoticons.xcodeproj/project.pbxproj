@@ -376,10 +376,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Toshiki Nakanishi (WRHUFP3254)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Emoticons/Emoticons-Prefix.pch";
 				INFOPLIST_FILE = "Emoticons/Emoticons-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7ACEE9F3-C24B-4C0D-948A-4442C51DD40A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +392,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Toshiki Nakanishi (7FY9ETDU35)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Emoticons/Emoticons-Prefix.pch";
 				INFOPLIST_FILE = "Emoticons/Emoticons-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "332AA5E9-3C12-493F-87BB-AD39F8B92203";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
