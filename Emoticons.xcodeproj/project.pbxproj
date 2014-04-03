@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
+		58F2DB7218ED7F530018E582 /* Libraries in Resources */ = {isa = PBXBuildFile; fileRef = 58F2DB7118ED7F530018E582 /* Libraries */; };
 		58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
 		58FB173118ED5E2A009D8BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */; };
 		58FB173318ED5E2A009D8BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173218ED5E2A009D8BFB /* UIKit.framework */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		58F2DB7118ED7F530018E582 /* Libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Libraries; sourceTree = "<group>"; };
 		58FB172B18ED5E2A009D8BFB /* Emoticons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoticons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FB172E18ED5E2A009D8BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */,
 				58FB173118ED5E2A009D8BFB /* CoreGraphics.framework in Frameworks */,
 				58FB173318ED5E2A009D8BFB /* UIKit.framework in Frameworks */,
 				58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */,
@@ -101,6 +106,7 @@
 		58FB172D18ED5E2A009D8BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */,
 				58FB172E18ED5E2A009D8BFB /* Foundation.framework */,
 				58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */,
 				58FB173218ED5E2A009D8BFB /* UIKit.framework */,
@@ -112,6 +118,7 @@
 		58FB173418ED5E2A009D8BFB /* Emoticons */ = {
 			isa = PBXGroup;
 			children = (
+				58F2DB7118ED7F530018E582 /* Libraries */,
 				58FB173D18ED5E2A009D8BFB /* AppDelegate.h */,
 				58FB173E18ED5E2A009D8BFB /* AppDelegate.m */,
 				58FB174018ED5E2A009D8BFB /* Main.storyboard */,
@@ -230,6 +237,7 @@
 			files = (
 				58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */,
 				58FB173918ED5E2A009D8BFB /* InfoPlist.strings in Resources */,
+				58F2DB7218ED7F530018E582 /* Libraries in Resources */,
 				58FB174218ED5E2A009D8BFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +470,7 @@
 				58FB175F18ED5E2B009D8BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58FB176018ED5E2B009D8BFB /* Build configuration list for PBXNativeTarget "EmoticonsTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +479,7 @@
 				58FB176218ED5E2B009D8BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
