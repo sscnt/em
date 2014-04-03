@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UITitleBarView.h"
+#import "UIBackgroundView.h"
+#import "UIEmoticonsChooserView.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UIScrollViewDelegate>
+{
+    UIScrollView* _scrollView;
+    UIEmoticonsChooserView* _chooserView;
+}
+
+- (void)presentToSettingsView;
 
 @end

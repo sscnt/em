@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "UITitleBarView.h"
 
-@interface UIEmoticonsChooserView : UIView
+@interface UIEmoticonsChooserView : UIView <UIScrollViewDelegate>
+{
+    UIView* _dammyBackgroundView;
+    UITitleBarView* _titleBarView;
+    UIScrollView* _categoriesScrollView;
+}
+
+@property (nonatomic, strong) UIView* view;
+
+- (void)toggleDammyBackgroundView:(BOOL)show;
 
 @end

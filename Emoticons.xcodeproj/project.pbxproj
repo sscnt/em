@@ -14,7 +14,6 @@
 		58FB173918ED5E2A009D8BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58FB173718ED5E2A009D8BFB /* InfoPlist.strings */; };
 		58FB173B18ED5E2A009D8BFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB173A18ED5E2A009D8BFB /* main.m */; };
 		58FB173F18ED5E2A009D8BFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB173E18ED5E2A009D8BFB /* AppDelegate.m */; };
-		58FB174218ED5E2A009D8BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FB174018ED5E2A009D8BFB /* Main.storyboard */; };
 		58FB174518ED5E2A009D8BFB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB174418ED5E2A009D8BFB /* MainViewController.m */; };
 		58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FB174618ED5E2A009D8BFB /* Images.xcassets */; };
 		58FB174E18ED5E2A009D8BFB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB174D18ED5E2A009D8BFB /* XCTest.framework */; };
@@ -24,6 +23,13 @@
 		58FB175A18ED5E2B009D8BFB /* EmoticonsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB175918ED5E2B009D8BFB /* EmoticonsTests.m */; };
 		58FBA24A18EDB35200A68C26 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA24C18EDB35200A68C26 /* Localizable.strings */; };
 		58FBA24F18EDB41B00A68C26 /* sheepsansbold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */; };
+		58FBA25918EDB9B600A68C26 /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25218EDB9B600A68C26 /* UIDevice+extend.m */; };
+		58FBA25A18EDB9B600A68C26 /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25418EDB9B600A68C26 /* UIScreen+extend.m */; };
+		58FBA25B18EDB9B600A68C26 /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25618EDB9B600A68C26 /* UIView+extend.m */; };
+		58FBA25C18EDB9B600A68C26 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25818EDB9B600A68C26 /* UIScrollView+extend.m */; };
+		58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */; };
+		58FBA26218EDBD5A00A68C26 /* Emoticon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA26418EDBD5A00A68C26 /* Emoticon.storyboard */; };
+		58FBA26818EDD90200A68C26 /* rounded-mplus-1p-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA26718EDD90200A68C26 /* rounded-mplus-1p-bold.ttf */; };
 		58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9818EDA8110079637F /* CurrentColor.m */; };
 		58FC0E9C18EDA9A60079637F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FC0E9B18EDA9A60079637F /* Security.framework */; };
 		58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9F18EDA9FE0079637F /* UICKeyChainStore.m */; };
@@ -70,6 +76,18 @@
 		58FBA24B18EDB35200A68C26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58FBA24D18EDB35A00A68C26 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sheepsansbold.ttf; sourceTree = "<group>"; };
+		58FBA25118EDB9B600A68C26 /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
+		58FBA25218EDB9B600A68C26 /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
+		58FBA25318EDB9B600A68C26 /* UIScreen+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+extend.h"; sourceTree = "<group>"; };
+		58FBA25418EDB9B600A68C26 /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
+		58FBA25518EDB9B600A68C26 /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
+		58FBA25618EDB9B600A68C26 /* UIView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extend.m"; sourceTree = "<group>"; };
+		58FBA25718EDB9B600A68C26 /* UIScrollView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+extend.h"; sourceTree = "<group>"; };
+		58FBA25818EDB9B600A68C26 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
+		58FBA25D18EDBA8400A68C26 /* UIBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBackgroundView.h; sourceTree = "<group>"; };
+		58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBackgroundView.m; sourceTree = "<group>"; };
+		58FBA26318EDBD5A00A68C26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Emoticon.storyboard; sourceTree = "<group>"; };
+		58FBA26718EDD90200A68C26 /* rounded-mplus-1p-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-bold.ttf"; sourceTree = "<group>"; };
 		58FC0E9718EDA8110079637F /* CurrentColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentColor.h; sourceTree = "<group>"; };
 		58FC0E9818EDA8110079637F /* CurrentColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentColor.m; sourceTree = "<group>"; };
 		58FC0E9B18EDA9A60079637F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -91,10 +109,8 @@
 		58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEmoticonsChooserView.h; sourceTree = "<group>"; };
 		58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEmoticonsChooserView.m; sourceTree = "<group>"; };
 		58FC0EBA18EDB2100079637F /* mplus-1c-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-bold.ttf"; sourceTree = "<group>"; };
-		58FC0EBC18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		58FC0EBD18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58FC0EBE18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		58FC0EBF18EDB2EB0079637F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +174,7 @@
 		58FB173418ED5E2A009D8BFB /* Emoticons */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA25018EDB9A400A68C26 /* Categories */,
 				58FC0EB918EDB1D10079637F /* fonts */,
 				58FC0E9618EDA8000079637F /* Shared */,
 				58FC0E9518EDA7FA0079637F /* Libraries */,
@@ -165,7 +182,7 @@
 				58FC0EB218EDAA270079637F /* ViewControllers */,
 				58FB173D18ED5E2A009D8BFB /* AppDelegate.h */,
 				58FB173E18ED5E2A009D8BFB /* AppDelegate.m */,
-				58FB174018ED5E2A009D8BFB /* Main.storyboard */,
+				58FBA26418EDBD5A00A68C26 /* Emoticon.storyboard */,
 				58FB174618ED5E2A009D8BFB /* Images.xcassets */,
 				58FB173518ED5E2A009D8BFB /* Supporting Files */,
 			);
@@ -202,13 +219,38 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		58FBA25018EDB9A400A68C26 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				58FBA25118EDB9B600A68C26 /* UIDevice+extend.h */,
+				58FBA25218EDB9B600A68C26 /* UIDevice+extend.m */,
+				58FBA25318EDB9B600A68C26 /* UIScreen+extend.h */,
+				58FBA25418EDB9B600A68C26 /* UIScreen+extend.m */,
+				58FBA25518EDB9B600A68C26 /* UIView+extend.h */,
+				58FBA25618EDB9B600A68C26 /* UIView+extend.m */,
+				58FBA25718EDB9B600A68C26 /* UIScrollView+extend.h */,
+				58FBA25818EDB9B600A68C26 /* UIScrollView+extend.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		58FBA26618EDCFCA00A68C26 /* Chooser */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */,
+				58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */,
+			);
+			name = Chooser;
+			sourceTree = "<group>";
+		};
 		58FC0E9418EDA7F40079637F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA26618EDCFCA00A68C26 /* Chooser */,
 				58FC0EB318EDAA4F0079637F /* UITitleBarView.h */,
 				58FC0EB418EDAA4F0079637F /* UITitleBarView.m */,
-				58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */,
-				58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */,
+				58FBA25D18EDBA8400A68C26 /* UIBackgroundView.h */,
+				58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,6 +312,7 @@
 		58FC0EB918EDB1D10079637F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA26718EDD90200A68C26 /* rounded-mplus-1p-bold.ttf */,
 				58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */,
 				58FC0EBA18EDB2100079637F /* mplus-1c-bold.ttf */,
 			);
@@ -357,8 +400,9 @@
 				58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */,
 				58FBA24F18EDB41B00A68C26 /* sheepsansbold.ttf in Resources */,
 				58FC0EBB18EDB2100079637F /* mplus-1c-bold.ttf in Resources */,
+				58FBA26218EDBD5A00A68C26 /* Emoticon.storyboard in Resources */,
+				58FBA26818EDD90200A68C26 /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FB173918ED5E2A009D8BFB /* InfoPlist.strings in Resources */,
-				58FB174218ED5E2A009D8BFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,13 +422,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FB174518ED5E2A009D8BFB /* MainViewController.m in Sources */,
+				58FBA25A18EDB9B600A68C26 /* UIScreen+extend.m in Sources */,
 				58FB173F18ED5E2A009D8BFB /* AppDelegate.m in Sources */,
+				58FBA25918EDB9B600A68C26 /* UIDevice+extend.m in Sources */,
+				58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */,
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
 				58FC0EAD18EDAA1C0079637F /* FMDatabase.m in Sources */,
 				58FC0EB818EDB19A0079637F /* UIEmoticonsChooserView.m in Sources */,
 				58FC0EB118EDAA1C0079637F /* FMResultSet.m in Sources */,
+				58FBA25B18EDB9B600A68C26 /* UIView+extend.m in Sources */,
 				58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */,
 				58FC0EAF18EDAA1C0079637F /* FMDatabasePool.m in Sources */,
+				58FBA25C18EDB9B600A68C26 /* UIScrollView+extend.m in Sources */,
 				58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */,
 				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
 				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
@@ -420,15 +469,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		58FB174018ED5E2A009D8BFB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58FC0EBC18EDB2A40079637F /* ja */,
-				58FC0EBF18EDB2EB0079637F /* en */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		58FB175618ED5E2B009D8BFB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -445,6 +485,14 @@
 				58FBA24D18EDB35A00A68C26 /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		58FBA26418EDBD5A00A68C26 /* Emoticon.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58FBA26318EDBD5A00A68C26 /* en */,
+			);
+			name = Emoticon.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CurrentColor.h"
 
 @interface UITitleBarView : UIView
 {
     UILabel* _titleLabel;
 }
+
+- (void)setTitle:(NSString*)title;
 
 @end

@@ -10,18 +10,17 @@
 
 @interface CurrentColor : NSObject
 
-@property (nonatomic, readonly) UIColor* backgroundColorTop;
-@property (nonatomic, readonly) UIColor* backgroundColorBottom;
-@property (nonatomic, readonly) UIColor* buttonColorTop;
-@property (nonatomic, readonly) UIColor* buttonColorBottom;
-@property (nonatomic, readonly) UIColor* textColor;
-@property (nonatomic, readonly) UIColor* titleBarShadowColor;
-@property (nonatomic, readonly) UIColor* titleBarBorderColor;
-@property (nonatomic, readonly) UIColor* cellNormalBackgroundColor;
-
 + (CurrentColor*)sharedManager;
+
++ (UIColor*)dropshadowColor;
+
++ (UIColor*)backgroundColorTop;
++ (UIColor*)backgroundColorBottom;
 
 + (UIColor*)titleBarShadowColor;
 + (UIColor*)titleBarBorderColor;
++ (UIColor*)titleBarBackgroundColor;
+
++ (UIColor*)cellNormalBackgroundColor;
 
 @end
