@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
-		58F2DB7218ED7F530018E582 /* Libraries in Resources */ = {isa = PBXBuildFile; fileRef = 58F2DB7118ED7F530018E582 /* Libraries */; };
 		58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
 		58FB173118ED5E2A009D8BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */; };
 		58FB173318ED5E2A009D8BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173218ED5E2A009D8BFB /* UIKit.framework */; };
@@ -16,13 +15,26 @@
 		58FB173B18ED5E2A009D8BFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB173A18ED5E2A009D8BFB /* main.m */; };
 		58FB173F18ED5E2A009D8BFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB173E18ED5E2A009D8BFB /* AppDelegate.m */; };
 		58FB174218ED5E2A009D8BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FB174018ED5E2A009D8BFB /* Main.storyboard */; };
-		58FB174518ED5E2A009D8BFB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB174418ED5E2A009D8BFB /* ViewController.m */; };
+		58FB174518ED5E2A009D8BFB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB174418ED5E2A009D8BFB /* MainViewController.m */; };
 		58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FB174618ED5E2A009D8BFB /* Images.xcassets */; };
 		58FB174E18ED5E2A009D8BFB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB174D18ED5E2A009D8BFB /* XCTest.framework */; };
 		58FB174F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
 		58FB175018ED5E2A009D8BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173218ED5E2A009D8BFB /* UIKit.framework */; };
 		58FB175818ED5E2B009D8BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58FB175618ED5E2B009D8BFB /* InfoPlist.strings */; };
 		58FB175A18ED5E2B009D8BFB /* EmoticonsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB175918ED5E2B009D8BFB /* EmoticonsTests.m */; };
+		58FBA24A18EDB35200A68C26 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA24C18EDB35200A68C26 /* Localizable.strings */; };
+		58FBA24F18EDB41B00A68C26 /* sheepsansbold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */; };
+		58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9818EDA8110079637F /* CurrentColor.m */; };
+		58FC0E9C18EDA9A60079637F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FC0E9B18EDA9A60079637F /* Security.framework */; };
+		58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9F18EDA9FE0079637F /* UICKeyChainStore.m */; };
+		58FC0EAD18EDAA1C0079637F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EA318EDAA1C0079637F /* FMDatabase.m */; };
+		58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EA518EDAA1C0079637F /* FMDatabaseAdditions.m */; };
+		58FC0EAF18EDAA1C0079637F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EA718EDAA1C0079637F /* FMDatabasePool.m */; };
+		58FC0EB018EDAA1C0079637F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EA918EDAA1C0079637F /* FMDatabaseQueue.m */; };
+		58FC0EB118EDAA1C0079637F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EAC18EDAA1C0079637F /* FMResultSet.m */; };
+		58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EB418EDAA4F0079637F /* UITitleBarView.m */; };
+		58FC0EB818EDB19A0079637F /* UIEmoticonsChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */; };
+		58FC0EBB18EDB2100079637F /* mplus-1c-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FC0EBA18EDB2100079637F /* mplus-1c-bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		58F2DB7118ED7F530018E582 /* Libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Libraries; sourceTree = "<group>"; };
 		58FB172B18ED5E2A009D8BFB /* Emoticons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoticons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FB172E18ED5E2A009D8BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,15 +59,42 @@
 		58FB173C18ED5E2A009D8BFB /* Emoticons-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Emoticons-Prefix.pch"; sourceTree = "<group>"; };
 		58FB173D18ED5E2A009D8BFB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58FB173E18ED5E2A009D8BFB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		58FB174118ED5E2A009D8BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		58FB174318ED5E2A009D8BFB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		58FB174418ED5E2A009D8BFB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		58FB174318ED5E2A009D8BFB /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		58FB174418ED5E2A009D8BFB /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		58FB174618ED5E2A009D8BFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		58FB174C18ED5E2A009D8BFB /* EmoticonsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmoticonsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FB174D18ED5E2A009D8BFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		58FB175518ED5E2B009D8BFB /* EmoticonsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmoticonsTests-Info.plist"; sourceTree = "<group>"; };
 		58FB175718ED5E2B009D8BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58FB175918ED5E2B009D8BFB /* EmoticonsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmoticonsTests.m; sourceTree = "<group>"; };
+		58FBA24B18EDB35200A68C26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58FBA24D18EDB35A00A68C26 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sheepsansbold.ttf; sourceTree = "<group>"; };
+		58FC0E9718EDA8110079637F /* CurrentColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentColor.h; sourceTree = "<group>"; };
+		58FC0E9818EDA8110079637F /* CurrentColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentColor.m; sourceTree = "<group>"; };
+		58FC0E9B18EDA9A60079637F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58FC0E9E18EDA9FE0079637F /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		58FC0E9F18EDA9FE0079637F /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
+		58FC0EA218EDAA1C0079637F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		58FC0EA318EDAA1C0079637F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		58FC0EA418EDAA1C0079637F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		58FC0EA518EDAA1C0079637F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		58FC0EA618EDAA1C0079637F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		58FC0EA718EDAA1C0079637F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		58FC0EA818EDAA1C0079637F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		58FC0EA918EDAA1C0079637F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		58FC0EAA18EDAA1C0079637F /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		58FC0EAB18EDAA1C0079637F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		58FC0EAC18EDAA1C0079637F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		58FC0EB318EDAA4F0079637F /* UITitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITitleBarView.h; sourceTree = "<group>"; };
+		58FC0EB418EDAA4F0079637F /* UITitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITitleBarView.m; sourceTree = "<group>"; };
+		58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEmoticonsChooserView.h; sourceTree = "<group>"; };
+		58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEmoticonsChooserView.m; sourceTree = "<group>"; };
+		58FC0EBA18EDB2100079637F /* mplus-1c-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-bold.ttf"; sourceTree = "<group>"; };
+		58FC0EBC18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		58FC0EBD18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		58FC0EBE18EDB2A40079637F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		58FC0EBF18EDB2EB0079637F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FC0E9C18EDA9A60079637F /* Security.framework in Frameworks */,
 				58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */,
 				58FB173118ED5E2A009D8BFB /* CoreGraphics.framework in Frameworks */,
 				58FB173318ED5E2A009D8BFB /* UIKit.framework in Frameworks */,
@@ -106,6 +145,7 @@
 		58FB172D18ED5E2A009D8BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58FC0E9B18EDA9A60079637F /* Security.framework */,
 				58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */,
 				58FB172E18ED5E2A009D8BFB /* Foundation.framework */,
 				58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */,
@@ -118,12 +158,14 @@
 		58FB173418ED5E2A009D8BFB /* Emoticons */ = {
 			isa = PBXGroup;
 			children = (
-				58F2DB7118ED7F530018E582 /* Libraries */,
+				58FC0EB918EDB1D10079637F /* fonts */,
+				58FC0E9618EDA8000079637F /* Shared */,
+				58FC0E9518EDA7FA0079637F /* Libraries */,
+				58FC0E9418EDA7F40079637F /* Views */,
+				58FC0EB218EDAA270079637F /* ViewControllers */,
 				58FB173D18ED5E2A009D8BFB /* AppDelegate.h */,
 				58FB173E18ED5E2A009D8BFB /* AppDelegate.m */,
 				58FB174018ED5E2A009D8BFB /* Main.storyboard */,
-				58FB174318ED5E2A009D8BFB /* ViewController.h */,
-				58FB174418ED5E2A009D8BFB /* ViewController.m */,
 				58FB174618ED5E2A009D8BFB /* Images.xcassets */,
 				58FB173518ED5E2A009D8BFB /* Supporting Files */,
 			);
@@ -133,6 +175,7 @@
 		58FB173518ED5E2A009D8BFB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58FBA24C18EDB35200A68C26 /* Localizable.strings */,
 				58FB173618ED5E2A009D8BFB /* Emoticons-Info.plist */,
 				58FB173718ED5E2A009D8BFB /* InfoPlist.strings */,
 				58FB173A18ED5E2A009D8BFB /* main.m */,
@@ -157,6 +200,80 @@
 				58FB175618ED5E2B009D8BFB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58FC0E9418EDA7F40079637F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0EB318EDAA4F0079637F /* UITitleBarView.h */,
+				58FC0EB418EDAA4F0079637F /* UITitleBarView.m */,
+				58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */,
+				58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		58FC0E9518EDA7FA0079637F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0EA118EDAA080079637F /* fmdb */,
+				58FC0E9D18EDA9E90079637F /* UIKeyChainStore */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		58FC0E9618EDA8000079637F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0E9718EDA8110079637F /* CurrentColor.h */,
+				58FC0E9818EDA8110079637F /* CurrentColor.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		58FC0E9D18EDA9E90079637F /* UIKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0E9E18EDA9FE0079637F /* UICKeyChainStore.h */,
+				58FC0E9F18EDA9FE0079637F /* UICKeyChainStore.m */,
+			);
+			name = UIKeyChainStore;
+			sourceTree = "<group>";
+		};
+		58FC0EA118EDAA080079637F /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0EA218EDAA1C0079637F /* FMDatabase.h */,
+				58FC0EA318EDAA1C0079637F /* FMDatabase.m */,
+				58FC0EA418EDAA1C0079637F /* FMDatabaseAdditions.h */,
+				58FC0EA518EDAA1C0079637F /* FMDatabaseAdditions.m */,
+				58FC0EA618EDAA1C0079637F /* FMDatabasePool.h */,
+				58FC0EA718EDAA1C0079637F /* FMDatabasePool.m */,
+				58FC0EA818EDAA1C0079637F /* FMDatabaseQueue.h */,
+				58FC0EA918EDAA1C0079637F /* FMDatabaseQueue.m */,
+				58FC0EAA18EDAA1C0079637F /* FMDB.h */,
+				58FC0EAB18EDAA1C0079637F /* FMResultSet.h */,
+				58FC0EAC18EDAA1C0079637F /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
+		58FC0EB218EDAA270079637F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58FB174318ED5E2A009D8BFB /* MainViewController.h */,
+				58FB174418ED5E2A009D8BFB /* MainViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		58FC0EB918EDB1D10079637F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				58FBA24E18EDB41B00A68C26 /* sheepsansbold.ttf */,
+				58FC0EBA18EDB2100079637F /* mplus-1c-bold.ttf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +335,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 58FB172218ED5E29009D8BFB;
 			productRefGroup = 58FB172C18ED5E2A009D8BFB /* Products */;
@@ -235,9 +353,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FBA24A18EDB35200A68C26 /* Localizable.strings in Resources */,
 				58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */,
+				58FBA24F18EDB41B00A68C26 /* sheepsansbold.ttf in Resources */,
+				58FC0EBB18EDB2100079637F /* mplus-1c-bold.ttf in Resources */,
 				58FB173918ED5E2A009D8BFB /* InfoPlist.strings in Resources */,
-				58F2DB7218ED7F530018E582 /* Libraries in Resources */,
 				58FB174218ED5E2A009D8BFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,9 +377,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58FB174518ED5E2A009D8BFB /* ViewController.m in Sources */,
+				58FB174518ED5E2A009D8BFB /* MainViewController.m in Sources */,
 				58FB173F18ED5E2A009D8BFB /* AppDelegate.m in Sources */,
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
+				58FC0EAD18EDAA1C0079637F /* FMDatabase.m in Sources */,
+				58FC0EB818EDB19A0079637F /* UIEmoticonsChooserView.m in Sources */,
+				58FC0EB118EDAA1C0079637F /* FMResultSet.m in Sources */,
+				58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */,
+				58FC0EAF18EDAA1C0079637F /* FMDatabasePool.m in Sources */,
+				58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */,
+				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
+				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
+				58FC0EB018EDAA1C0079637F /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +415,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				58FB173818ED5E2A009D8BFB /* en */,
+				58FC0EBD18EDB2A40079637F /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -293,7 +423,8 @@
 		58FB174018ED5E2A009D8BFB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				58FB174118ED5E2A009D8BFB /* Base */,
+				58FC0EBC18EDB2A40079637F /* ja */,
+				58FC0EBF18EDB2EB0079637F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -302,8 +433,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				58FB175718ED5E2B009D8BFB /* en */,
+				58FC0EBE18EDB2A40079637F /* ja */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		58FBA24C18EDB35200A68C26 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58FBA24B18EDB35200A68C26 /* en */,
+				58FBA24D18EDB35A00A68C26 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

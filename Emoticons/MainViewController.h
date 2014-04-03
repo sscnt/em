@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITitleBarView.h"
 
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController
 
 @end
