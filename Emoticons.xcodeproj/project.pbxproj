@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
+		58F66CDD18EE8884005FCC8C /* categories.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDC18EE8884005FCC8C /* categories.sqlite */; };
+		58F66CDF18EE89EE005FCC8C /* emoticons.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */; };
+		58F66CE118EE8AC3005FCC8C /* history.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE018EE8AC3005FCC8C /* history.sqlite */; };
+		58F66CE318EE8B0F005FCC8C /* favorites.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE218EE8B0F005FCC8C /* favorites.sqlite */; };
+		58F66CE518EE8C6A005FCC8C /* updates.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE418EE8C6A005FCC8C /* updates.sqlite */; };
 		58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
 		58FB173118ED5E2A009D8BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */; };
 		58FB173318ED5E2A009D8BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB173218ED5E2A009D8BFB /* UIKit.framework */; };
@@ -30,6 +35,7 @@
 		58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */; };
 		58FBA26218EDBD5A00A68C26 /* Emoticon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA26418EDBD5A00A68C26 /* Emoticon.storyboard */; };
 		58FBA26818EDD90200A68C26 /* rounded-mplus-1p-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FBA26718EDD90200A68C26 /* rounded-mplus-1p-bold.ttf */; };
+		58FBA26B18EDF47C00A68C26 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBA26A18EDF47C00A68C26 /* RootViewController.m */; };
 		58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9818EDA8110079637F /* CurrentColor.m */; };
 		58FC0E9C18EDA9A60079637F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FC0E9B18EDA9A60079637F /* Security.framework */; };
 		58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC0E9F18EDA9FE0079637F /* UICKeyChainStore.m */; };
@@ -55,6 +61,11 @@
 
 /* Begin PBXFileReference section */
 		58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		58F66CDC18EE8884005FCC8C /* categories.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.sqlite; sourceTree = "<group>"; };
+		58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = emoticons.sqlite; sourceTree = "<group>"; };
+		58F66CE018EE8AC3005FCC8C /* history.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = history.sqlite; sourceTree = "<group>"; };
+		58F66CE218EE8B0F005FCC8C /* favorites.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = favorites.sqlite; sourceTree = "<group>"; };
+		58F66CE418EE8C6A005FCC8C /* updates.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = updates.sqlite; sourceTree = "<group>"; };
 		58FB172B18ED5E2A009D8BFB /* Emoticons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoticons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FB172E18ED5E2A009D8BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58FB173018ED5E2A009D8BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +99,8 @@
 		58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBackgroundView.m; sourceTree = "<group>"; };
 		58FBA26318EDBD5A00A68C26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Emoticon.storyboard; sourceTree = "<group>"; };
 		58FBA26718EDD90200A68C26 /* rounded-mplus-1p-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-bold.ttf"; sourceTree = "<group>"; };
+		58FBA26918EDF47C00A68C26 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		58FBA26A18EDF47C00A68C26 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		58FC0E9718EDA8110079637F /* CurrentColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentColor.h; sourceTree = "<group>"; };
 		58FC0E9818EDA8110079637F /* CurrentColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentColor.m; sourceTree = "<group>"; };
 		58FC0E9B18EDA9A60079637F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -139,6 +152,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58F66CDB18EE886B005FCC8C /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				58F66CE418EE8C6A005FCC8C /* updates.sqlite */,
+				58F66CE218EE8B0F005FCC8C /* favorites.sqlite */,
+				58F66CE018EE8AC3005FCC8C /* history.sqlite */,
+				58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */,
+				58F66CDC18EE8884005FCC8C /* categories.sqlite */,
+			);
+			name = sqlite;
+			sourceTree = "<group>";
+		};
 		58FB172218ED5E29009D8BFB = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +199,7 @@
 		58FB173418ED5E2A009D8BFB /* Emoticons */ = {
 			isa = PBXGroup;
 			children = (
+				58F66CDB18EE886B005FCC8C /* sqlite */,
 				58FBA25018EDB9A400A68C26 /* Categories */,
 				58FC0EB918EDB1D10079637F /* fonts */,
 				58FC0E9618EDA8000079637F /* Shared */,
@@ -305,6 +331,8 @@
 			children = (
 				58FB174318ED5E2A009D8BFB /* MainViewController.h */,
 				58FB174418ED5E2A009D8BFB /* MainViewController.m */,
+				58FBA26918EDF47C00A68C26 /* RootViewController.h */,
+				58FBA26A18EDF47C00A68C26 /* RootViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -396,13 +424,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F66CDF18EE89EE005FCC8C /* emoticons.sqlite in Resources */,
 				58FBA24A18EDB35200A68C26 /* Localizable.strings in Resources */,
 				58FB174718ED5E2A009D8BFB /* Images.xcassets in Resources */,
 				58FBA24F18EDB41B00A68C26 /* sheepsansbold.ttf in Resources */,
+				58F66CE518EE8C6A005FCC8C /* updates.sqlite in Resources */,
+				58F66CE318EE8B0F005FCC8C /* favorites.sqlite in Resources */,
 				58FC0EBB18EDB2100079637F /* mplus-1c-bold.ttf in Resources */,
 				58FBA26218EDBD5A00A68C26 /* Emoticon.storyboard in Resources */,
+				58F66CE118EE8AC3005FCC8C /* history.sqlite in Resources */,
 				58FBA26818EDD90200A68C26 /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FB173918ED5E2A009D8BFB /* InfoPlist.strings in Resources */,
+				58F66CDD18EE8884005FCC8C /* categories.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +468,7 @@
 				58FC0EAF18EDAA1C0079637F /* FMDatabasePool.m in Sources */,
 				58FBA25C18EDB9B600A68C26 /* UIScrollView+extend.m in Sources */,
 				58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */,
+				58FBA26B18EDF47C00A68C26 /* RootViewController.m in Sources */,
 				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
 				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
 				58FC0EB018EDAA1C0079637F /* FMDatabaseQueue.m in Sources */,

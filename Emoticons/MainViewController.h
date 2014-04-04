@@ -16,6 +16,8 @@
     UIEmoticonsChooserView* _chooserView;
 }
 
+@property (nonatomic, strong) UIBackgroundView* view;
+
 - (void)presentToSettingsView;
 
 @end

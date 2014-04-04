@@ -40,17 +40,24 @@
         [self.view addSubview:_titleBarView];
         
         //// Category list scroll view
-        _categoriesScrollView = [[UIScrollView alloc] initWithFrame:frame];
+        _categoriesScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
         _categoriesScrollView.delegate = self;
         _categoriesScrollView.showsHorizontalScrollIndicator = NO;
         _categoriesScrollView.showsVerticalScrollIndicator = NO;
         _categoriesScrollView.pagingEnabled = YES;
         _categoriesScrollView.bounces = NO;
-        _categoriesScrollView.userInteractionEnabled = NO;
+        _categoriesScrollView.scrollEnabled = NO;
         [self.view addSubview:_categoriesScrollView];
+
         
     }
     return self;
+}
+
+- (void)setVisibleSize:(CGSize)visibleSize
+{
+    _visibleSize = visibleSize;
+    _categoriesScrollView.frame = CGRectMake(0.0f, [_titleBarView bottom], _categoriesScrollView.frame.size.width, visibleSize.height - _titleBarView.frame.size.height);
 }
 
 - (void)dealloc

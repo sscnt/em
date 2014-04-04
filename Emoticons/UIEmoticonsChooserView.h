@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic, strong) UIView* view;
+@property (nonatomic, assign) CGSize visibleSize;
 
 - (void)toggleDammyBackgroundView:(BOOL)show;
 
