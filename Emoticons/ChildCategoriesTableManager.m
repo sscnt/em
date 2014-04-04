@@ -1,31 +1,31 @@
 //
-//  ParentCategoriesDataSource.m
+//  ChildCategoriesTableManager.m
 //  Emoticons
 //
 //  Created by SSC on 2014/04/04.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "ParentCategoriesTableManager.h"
+#import "ChildCategoriesTableManager.h"
 
-@implementation ParentCategoriesTableManager
+@implementation ChildCategoriesTableManager
 
-static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
+static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
 
-+ (ParentCategoriesTableManager*)instance {
++ (ChildCategoriesTableManager*)instance {
 	@synchronized(self) {
-		if (sharedParentCategoriesDataSource == nil) {
-			sharedParentCategoriesDataSource = [[self alloc] init];
+		if (sharedChildCategoriesDataSource == nil) {
+			sharedChildCategoriesDataSource = [[self alloc] init];
 		}
 	}
-	return sharedParentCategoriesDataSource;
+	return sharedChildCategoriesDataSource;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
 	@synchronized(self) {
-		if (sharedParentCategoriesDataSource == nil) {
-			sharedParentCategoriesDataSource = [super allocWithZone:zone];
-			return sharedParentCategoriesDataSource;
+		if (sharedChildCategoriesDataSource == nil) {
+			sharedChildCategoriesDataSource = [super allocWithZone:zone];
+			return sharedChildCategoriesDataSource;
 		}
 	}
 	return nil;
@@ -53,7 +53,7 @@ static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = @"hoge";
+    cell.textLabel.text = @"fuga";
     
     return cell;
 }
@@ -62,7 +62,7 @@ static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate tableView:tableView didSelectParentCategory:1];
+    [self.delegate tableView:tableView didSelectChildCategory:2];
 }
 
 @end

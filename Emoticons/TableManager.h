@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @protocol TableManagerDelegate <NSObject>
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+@optional
+- (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id;
+- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id;
 
 @end
 

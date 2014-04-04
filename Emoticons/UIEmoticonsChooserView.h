@@ -15,9 +15,15 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCategoryTableId){
     UIEmoticonChooserCategoryTableIdChildren
 };
 
+typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
+    UIEmoticonChooserCurrentPageIdParentCategory = 1,
+    UIEmoticonChooserCurrentPageIdChildCategory,
+    UIEmoticonChooserCurrentPageIdEmoticonsList
+};
 
-@interface UIEmoticonsChooserView : UIView <UIScrollViewDelegate, TableManagerDelegate>
+@interface UIEmoticonsChooserView : UIView <CategoriesScrollManagerDelegate, TableManagerDelegate>
 {
+    UIEmoticonChooserCurrentPageId _currentPage;
     UIView* _dammyBackgroundView;
     UITitleBarView* _titleBarView;
     UIScrollView* _categoriesScrollView;

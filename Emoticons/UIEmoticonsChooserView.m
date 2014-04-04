@@ -15,6 +15,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _currentPage = UIEmoticonChooserCurrentPageIdParentCategory;
+        
         //// show only at loading
         _dammyBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, frame.size.width, frame.size.height)];
         _dammyBackgroundView.backgroundColor = [CurrentColor cellNormalBackgroundColor];
@@ -41,21 +43,33 @@
         
         //// Category list scroll view
         _categoriesScrollView = [[UIScrollView alloc] initWithFrame:frame];
-        _categoriesScrollView.delegate = self;
+        _categoriesScrollView.delegate = [CategoriesScrollManager instance];
         _categoriesScrollView.showsHorizontalScrollIndicator = NO;
         _categoriesScrollView.showsVerticalScrollIndicator = NO;
         _categoriesScrollView.pagingEnabled = YES;
         _categoriesScrollView.bounces = NO;
         _categoriesScrollView.scrollEnabled = NO;
         [self.view addSubview:_categoriesScrollView];
+        [CategoriesScrollManager instance].delegate = self;
         
         //// Parent categories table view
         _parentCategoriesTableView = [[UITableView alloc] initWithFrame:frame];
         _parentCategoriesTableView.delegate = [ParentCategoriesTableManager instance];
         _parentCategoriesTableView.dataSource = [ParentCategoriesTableManager instance];
+        _parentCategoriesTableView.backgroundColor = [UIColor clearColor];
         [ParentCategoriesTableManager instance].delegate = self;
         _parentCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
         [_categoriesScrollView addSubview:_parentCategoriesTableView];
+        
+        //// Child categories table view
+        _childCategoriesTableView = [[UITableView alloc] initWithFrame:frame];
+        _childCategoriesTableView.delegate = [ChildCategoriesTableManager instance];
+        _childCategoriesTableView.dataSource = [ChildCategoriesTableManager instance];
+        _childCategoriesTableView.backgroundColor = [UIColor clearColor];
+        [ChildCategoriesTableManager instance].delegate = self;
+        _childCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
+        [_categoriesScrollView addSubview:_childCategoriesTableView];
+        
     }
     return self;
 }
@@ -72,13 +86,63 @@
     
     //// Category
     _parentCategoriesTableView.frame = categoryTableVisibleRect;
+    _childCategoriesTableView.frame = categoryTableVisibleRect;
+    [_childCategoriesTableView setX:visibleSize.width];
 }
 
 #pragma mark TableManager delegate
+#pragma mark Parent
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id
 {
-    LOG(@"Cell was selected.");
+    LOG(@"Parent category %d was selected.", category_id);
+    [self presentToChildCategoryList];
+}
+
+#pragma mark Children
+
+- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id
+{
+    LOG(@"CHild category %d was selected.", category_id);
+    [self presentToParentCategoryList];
+}
+
+
+
+#pragma mark present
+
+- (BOOL)categoryPagerShouldPresent
+{
+    _categoriesScrollView.scrollEnabled = NO;
+    [CategoriesScrollManager instance].limitDirection = NO;
+    return YES;
+}
+
+- (void)presentToParentCategoryList
+{
+    if([self categoryPagerShouldPresent]){
+        [_categoriesScrollView scrollRectToVisible:CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
+        _currentPage = UIEmoticonChooserCurrentPageIdParentCategory;
+    }
+}
+
+- (void)presentToChildCategoryList
+{
+    if([self categoryPagerShouldPresent]){
+        [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
+        _currentPage = UIEmoticonChooserCurrentPageIdChildCategory;
+    }
+}
+
+#pragma mark scrollview delegate
+
+- (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
+{
+    LOG(@"page was changed %d", page);
+    if(page == UIEmoticonChooserCurrentPageIdChildCategory){
+        _categoriesScrollView.scrollEnabled = YES;
+        [CategoriesScrollManager instance].limitDirection = YES;
+    }
 }
 
 - (void)dealloc

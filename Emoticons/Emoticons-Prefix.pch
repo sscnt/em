@@ -45,3 +45,6 @@
 #import "CurrentColor.h"
 #import "DataProvider.h"
 #import "ParentCategoriesTableManager.h"
+#import "ChildCategoriesTableManager.h"
+#import "CategoriesScrollManager.h"
+
