@@ -40,7 +40,7 @@
         [self.view addSubview:_titleBarView];
         
         //// Category list scroll view
-        _categoriesScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+        _categoriesScrollView = [[UIScrollView alloc] initWithFrame:frame];
         _categoriesScrollView.delegate = self;
         _categoriesScrollView.showsHorizontalScrollIndicator = NO;
         _categoriesScrollView.showsVerticalScrollIndicator = NO;
@@ -48,8 +48,14 @@
         _categoriesScrollView.bounces = NO;
         _categoriesScrollView.scrollEnabled = NO;
         [self.view addSubview:_categoriesScrollView];
-
         
+        //// Parent categories table view
+        _parentCategoriesTableView = [[UITableView alloc] initWithFrame:frame];
+        _parentCategoriesTableView.delegate = [ParentCategoriesTableManager instance];
+        _parentCategoriesTableView.dataSource = [ParentCategoriesTableManager instance];
+        [ParentCategoriesTableManager instance].delegate = self;
+        _parentCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
+        [_categoriesScrollView addSubview:_parentCategoriesTableView];
     }
     return self;
 }
@@ -57,7 +63,22 @@
 - (void)setVisibleSize:(CGSize)visibleSize
 {
     _visibleSize = visibleSize;
-    _categoriesScrollView.frame = CGRectMake(0.0f, [_titleBarView bottom], _categoriesScrollView.frame.size.width, visibleSize.height - _titleBarView.frame.size.height);
+    CGRect scrollViewVisibleRect = CGRectMake(0.0f, [_titleBarView bottom], _categoriesScrollView.frame.size.width, visibleSize.height - _titleBarView.frame.size.height);
+    CGRect categoryTableVisibleRect = CGRectMake(0.0f, 0.0f, _categoriesScrollView.frame.size.width, visibleSize.height - _titleBarView.frame.size.height);
+    
+    //// Scroll
+    _categoriesScrollView.frame = scrollViewVisibleRect;
+    _categoriesScrollView.contentSize = CGSizeMake(_categoriesScrollView.frame.size.width * 3.0f, _categoriesScrollView.frame.size.height);
+    
+    //// Category
+    _parentCategoriesTableView.frame = categoryTableVisibleRect;
+}
+
+#pragma mark TableManager delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LOG(@"Cell was selected.");
 }
 
 - (void)dealloc

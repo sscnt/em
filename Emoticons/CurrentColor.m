@@ -12,7 +12,7 @@
 
 static CurrentColor* sharedCurrentColor = nil;
 
-+ (CurrentColor*)sharedManager {
++ (CurrentColor*)instance {
 	@synchronized(self) {
 		if (sharedCurrentColor == nil) {
 			sharedCurrentColor = [[self alloc] init];

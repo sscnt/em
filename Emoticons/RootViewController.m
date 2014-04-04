@@ -26,7 +26,9 @@
 
 - (void)viewDidLoad
 {
-    [UIApplication sharedApplication].statusBarHidden = NO;
+    if([UIDevice isIOS6]){
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
     [super viewDidLoad];
     [self.navigationBar setHidden:YES];
     MainViewController* controller = [[MainViewController alloc] init];

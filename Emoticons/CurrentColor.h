@@ -10,7 +10,7 @@
 
 @interface CurrentColor : NSObject
 
-+ (CurrentColor*)sharedManager;
++ (CurrentColor*)instance;
 
 + (UIColor*)dropshadowColor;
 

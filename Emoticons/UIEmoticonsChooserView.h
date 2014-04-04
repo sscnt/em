@@ -9,11 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "UITitleBarView.h"
 
-@interface UIEmoticonsChooserView : UIView <UIScrollViewDelegate>
+
+typedef NS_ENUM(NSInteger, UIEmoticonChooserCategoryTableId){
+    UIEmoticonChooserCategoryTableIdParent = 1,
+    UIEmoticonChooserCategoryTableIdChildren
+};
+
+
+@interface UIEmoticonsChooserView : UIView <UIScrollViewDelegate, TableManagerDelegate>
 {
     UIView* _dammyBackgroundView;
     UITitleBarView* _titleBarView;
     UIScrollView* _categoriesScrollView;
+    UITableView* _parentCategoriesTableView;
+    UITableView* _childCategoriesTableView;
 }
 
 @property (nonatomic, strong) UIView* view;
