@@ -99,4 +99,14 @@
     return NO;
 }
 
++ (BOOL)isCurrentLanguageJapanese
+{
+    NSArray *langs = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [langs objectAtIndex:0];
+    if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

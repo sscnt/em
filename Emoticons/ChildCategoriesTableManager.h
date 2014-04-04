@@ -7,6 +7,7 @@
 //
 
 #import "TableManager.h"
+#import "UICategoryTableViewCell.h"
 
 @interface ChildCategoriesTableManager : TableManager
 

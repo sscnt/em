@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		58078BCF18EEDF0B00AC301E /* CategoriesScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BCE18EEDF0B00AC301E /* CategoriesScrollManager.m */; };
+		58078BD318EEF08600AC301E /* UICategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BD218EEF08600AC301E /* UICategoryTableViewCell.m */; };
+		58078BD618EF033800AC301E /* UIMultiColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BD518EF033800AC301E /* UIMultiColumnView.m */; };
+		58078BDA18EF14C100AC301E /* CategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BD918EF14C100AC301E /* CategoryObject.m */; };
+		58078BDD18EF14D000AC301E /* EmoticonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BDC18EF14D000AC301E /* EmoticonObject.m */; };
 		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
 		58F2ED4D18EEAE3A00FB6A2D /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */; };
 		58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED5018EEB3EF00FB6A2D /* ParentCategoriesTableManager.m */; };
@@ -67,6 +71,14 @@
 /* Begin PBXFileReference section */
 		58078BCD18EEDF0B00AC301E /* CategoriesScrollManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesScrollManager.h; sourceTree = "<group>"; };
 		58078BCE18EEDF0B00AC301E /* CategoriesScrollManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesScrollManager.m; sourceTree = "<group>"; };
+		58078BD118EEF08600AC301E /* UICategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICategoryTableViewCell.h; sourceTree = "<group>"; };
+		58078BD218EEF08600AC301E /* UICategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICategoryTableViewCell.m; sourceTree = "<group>"; };
+		58078BD418EF033800AC301E /* UIMultiColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMultiColumnView.h; sourceTree = "<group>"; };
+		58078BD518EF033800AC301E /* UIMultiColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMultiColumnView.m; sourceTree = "<group>"; };
+		58078BD818EF14C100AC301E /* CategoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryObject.h; sourceTree = "<group>"; };
+		58078BD918EF14C100AC301E /* CategoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryObject.m; sourceTree = "<group>"; };
+		58078BDB18EF14D000AC301E /* EmoticonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonObject.h; sourceTree = "<group>"; };
+		58078BDC18EF14D000AC301E /* EmoticonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonObject.m; sourceTree = "<group>"; };
 		58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		58F2ED4B18EEAE3A00FB6A2D /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
 		58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
@@ -176,6 +188,26 @@
 			name = ScrollManager;
 			sourceTree = "<group>";
 		};
+		58078BD018EEF04800AC301E /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				58078BD118EEF08600AC301E /* UICategoryTableViewCell.h */,
+				58078BD218EEF08600AC301E /* UICategoryTableViewCell.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		58078BD718EF14A600AC301E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				58078BD818EF14C100AC301E /* CategoryObject.h */,
+				58078BD918EF14C100AC301E /* CategoryObject.m */,
+				58078BDB18EF14D000AC301E /* EmoticonObject.h */,
+				58078BDC18EF14D000AC301E /* EmoticonObject.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		58F2ED4E18EEB39E00FB6A2D /* TableManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +275,7 @@
 				58F2ED4E18EEB39E00FB6A2D /* TableManager */,
 				58078BCC18EEDEDE00AC301E /* ScrollManager */,
 				58FC0E9518EDA7FA0079637F /* Libraries */,
+				58078BD718EF14A600AC301E /* Objects */,
 				58FC0E9418EDA7F40079637F /* Views */,
 				58FC0EB218EDAA270079637F /* ViewControllers */,
 				58FB173D18ED5E2A009D8BFB /* AppDelegate.h */,
@@ -304,6 +337,8 @@
 			children = (
 				58FC0EB618EDB19A0079637F /* UIEmoticonsChooserView.h */,
 				58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */,
+				58078BD418EF033800AC301E /* UIMultiColumnView.h */,
+				58078BD518EF033800AC301E /* UIMultiColumnView.m */,
 			);
 			name = Chooser;
 			sourceTree = "<group>";
@@ -311,6 +346,7 @@
 		58FC0E9418EDA7F40079637F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58078BD018EEF04800AC301E /* Table */,
 				58FBA26618EDCFCA00A68C26 /* Chooser */,
 				58FC0EB318EDAA4F0079637F /* UITitleBarView.h */,
 				58FC0EB418EDAA4F0079637F /* UITitleBarView.m */,
@@ -499,8 +535,10 @@
 				58FBA25A18EDB9B600A68C26 /* UIScreen+extend.m in Sources */,
 				58FB173F18ED5E2A009D8BFB /* AppDelegate.m in Sources */,
 				58FA8DE418EEBF300048A715 /* ChildCategoriesTableManager.m in Sources */,
+				58078BDA18EF14C100AC301E /* CategoryObject.m in Sources */,
 				58FA8DE018EEB9FC0048A715 /* TableManager.m in Sources */,
 				58FBA25918EDB9B600A68C26 /* UIDevice+extend.m in Sources */,
+				58078BDD18EF14D000AC301E /* EmoticonObject.m in Sources */,
 				58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */,
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
 				58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */,
@@ -512,8 +550,10 @@
 				58FBA25B18EDB9B600A68C26 /* UIView+extend.m in Sources */,
 				58FC0EA018EDA9FE0079637F /* UICKeyChainStore.m in Sources */,
 				58FC0EAF18EDAA1C0079637F /* FMDatabasePool.m in Sources */,
+				58078BD618EF033800AC301E /* UIMultiColumnView.m in Sources */,
 				58FBA25C18EDB9B600A68C26 /* UIScrollView+extend.m in Sources */,
 				58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */,
+				58078BD318EEF08600AC301E /* UICategoryTableViewCell.m in Sources */,
 				58FBA26B18EDF47C00A68C26 /* RootViewController.m in Sources */,
 				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
 				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
