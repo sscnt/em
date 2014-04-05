@@ -40,6 +40,7 @@ static DataProvider* sharedDataProvider = nil;
     self = [super init];
     if(self){
         _childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+        _emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
         _parentCategoryObjectsDefaultCache = nil;
         _parentCategoryObjectsUserAddedCache = nil;
     }
@@ -51,6 +52,7 @@ static DataProvider* sharedDataProvider = nil;
     [[self instance].childCategoryObjectsByCategoryIdCache removeAllObjects];
     [self instance].childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
     [self instance].parentCategoryObjectsDefaultCache = nil;
+    [self instance].parentCategoryObjectsUserAddedCache = nil;
 }
 
 #pragma mark Datagase
@@ -112,7 +114,7 @@ static DataProvider* sharedDataProvider = nil;
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];
             cat.name = [rs stringForColumn:@"name"];
-            cat.parent_id = [rs intForColumn:@"parent_id"];
+            cat.parentId = [rs intForColumn:@"parent_id"];
             [_result addObject:cat];
         }
         [rs close];
@@ -147,7 +149,7 @@ static DataProvider* sharedDataProvider = nil;
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];
             cat.name = [rs stringForColumn:@"name"];
-            cat.parent_id = [rs intForColumn:@"parent_id"];
+            cat.parentId = [rs intForColumn:@"parent_id"];
             [_result addObject:cat];
         }
         [rs close];
@@ -182,7 +184,7 @@ static DataProvider* sharedDataProvider = nil;
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];
             cat.name = [rs stringForColumn:@"name"];
-            cat.parent_id = [rs intForColumn:@"parent_id"];
+            cat.parentId = [rs intForColumn:@"parent_id"];
             [_result addObject:cat];
         }
         [rs close];
@@ -198,5 +200,41 @@ static DataProvider* sharedDataProvider = nil;
 
 #pragma mark Emoticons
 
+
++ (NSArray *)emoticonObjectsByCategoryId:(int)category_id
+{
+    NSArray* result = [[self instance].emoticonsObjectsByCategoryIdCache objectForKey:[NSString stringWithFormat:@"%d", category_id]];
+    if(result){
+        return result;
+    }
+    NSMutableArray* _result = [NSMutableArray array];
+    FMDatabase* db = [self databaseWithFilename:@"emoticons.sqlite"];
+    if(!db){
+        LOG(@"db is nil.");
+        return nil;
+    }
+    if ([db open]) {
+        [db setShouldCacheStatements:YES];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"dictionary\" WHERE \"category_id\" == %d ORDER BY \"last_used_time\" DESC;", category_id]];
+        while ([rs next]) {
+            EmoticonObject* emo = [[EmoticonObject alloc] init];
+            emo.id = [rs intForColumn:@"id"];
+            emo.emoticon = [rs stringForColumn:@"emoticon"];
+            emo.categoryId = [rs intForColumn:@"category_id"];
+            emo.lastUsedTime = [rs intForColumn:@"last_used_time"];
+            emo.addedByUser = ([rs intForColumn:@"added_by_user"] == 0) ? NO : YES;
+            [_result addObject:emo];
+        }
+        [rs close];
+        [db close];
+    }else{
+        //DBが開けなかったらここ
+        LOG(@"cannot open database");
+    }
+    result = [_result copy];
+    [[self instance].emoticonsObjectsByCategoryIdCache setObject:result forKey:[NSString stringWithFormat:@"%d", category_id]];
+    return result;
+}
 
 @end

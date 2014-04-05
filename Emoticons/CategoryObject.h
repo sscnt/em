@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) int id;
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, assign) int parent_id;
+@property (nonatomic, assign) int parentId;
+@property (nonatomic, assign) BOOL addedByUser;
 
 @end

@@ -10,4 +10,10 @@
 
 @interface EmoticonObject : NSObject
 
+@property (nonatomic, assign) int id;
+@property (nonatomic, strong) NSString* emoticon;
+@property (nonatomic, assign) int categoryId;
+@property (nonatomic, assign) int lastUsedTime;
+@property (nonatomic, assign) BOOL addedByUser;
+
 @end

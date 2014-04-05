@@ -14,6 +14,7 @@
 @interface DataProvider : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary* childCategoryObjectsByCategoryIdCache;
+@property (nonatomic, strong) NSMutableDictionary* emoticonsObjectsByCategoryIdCache;
 @property (nonatomic, strong) NSArray* parentCategoryObjectsDefaultCache;
 @property (nonatomic, strong) NSArray* parentCategoryObjectsUserAddedCache;
 
