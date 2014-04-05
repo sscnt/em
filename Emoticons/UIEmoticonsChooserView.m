@@ -100,29 +100,62 @@
     [_categoriesScrollView addSubview:_childCategoriesTableView];
 }
 
+- (void)placeEmoticonsColumnView:(BOOL)nextToChild
+{
+    if(_emoticonsColumnView){
+        [_emoticonsColumnView removeFromSuperview];
+        _emoticonsColumnView = nil;
+    }
+    CGFloat left = _visibleSize.width;
+    if(nextToChild){
+        left = _visibleSize.width * 2.0f;
+    }
+    CGRect categoryTableVisibleRect = CGRectMake(left, 0.0f, _categoriesScrollView.frame.size.width, _visibleSize.height - _titleBarView.frame.size.height);
+    _emoticonsColumnView = [[UIMultiColumnView alloc] initWithFrame:categoryTableVisibleRect];
+    NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:_currentParentCategoryId];
+    _emoticonsColumnView.categoryObjectArray = categories;
+    _emoticonsColumnView.visibleSize = _visibleSize;
+    _emoticonsColumnView.parentCategoryId = _currentParentCategoryId;
+    [_emoticonsColumnView layout];
+    [_categoriesScrollView addSubview:_emoticonsColumnView];
+}
+
 #pragma mark TableManager delegate
 #pragma mark Parent
 
 - (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id
 {
     LOG(@"Parent category %d was selected.", category_id);
-    [ChildCategoriesTableManager instance].parentCategoryId = category_id;
-    [self placeChildCategoryTableView];
-    [self presentToChildCategoryList];
+    _currentParentCategoryId = category_id;
+    int number_of_child = [DataProvider childCategoryCountByParentCategoryId:category_id];
+    if(number_of_child == 0){
+        
+    }else{
+        [ChildCategoriesTableManager instance].parentCategoryId = category_id;
+        [self placeChildCategoryTableView];
+        [self presentToChildCategoryList];
+    }
 }
 
 #pragma mark Children
 
-- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id
+- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id AtRow:(int)row
 {
     LOG(@"CHild category %d was selected.", category_id);
+    _currentChildCategoryId = category_id;
+    _currentSelectedRow = row;
+    if(_currentPage == UIEmoticonChooserCurrentPageIdChildCategory){
+        [self placeEmoticonsColumnView:YES];
+    }
+    if(_currentPage == UIEmoticonChooserCurrentPageIdParentCategory){
+        [self placeEmoticonsColumnView:NO];
+    }
+    [self presentToEmoticonsList];
 }
-
-
 
 #pragma mark present
 
-- (BOOL)categoryPagerShouldPresent
+- (BOOL)pagerShouldPresent
 {
     _categoriesScrollView.scrollEnabled = NO;
     [CategoriesScrollManager instance].limitDirection = NO;
@@ -131,7 +164,7 @@
 
 - (void)presentToParentCategoryList
 {
-    if([self categoryPagerShouldPresent]){
+    if([self pagerShouldPresent]){
         [_categoriesScrollView scrollRectToVisible:CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         _currentPage = UIEmoticonChooserCurrentPageIdParentCategory;
     }
@@ -139,9 +172,22 @@
 
 - (void)presentToChildCategoryList
 {
-    if([self categoryPagerShouldPresent]){
+    if([self pagerShouldPresent]){
         [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         _currentPage = UIEmoticonChooserCurrentPageIdChildCategory;
+    }
+}
+
+- (void)presentToEmoticonsList
+{
+    if([self pagerShouldPresent]){
+        if(_currentPage == UIEmoticonChooserCurrentPageIdChildCategory){
+            [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width * 2.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
+        }
+        if(_currentPage == UIEmoticonChooserCurrentPageIdParentCategory){
+            [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
+        }
+        _currentPage = UIEmoticonChooserCurrentPageIdEmoticonsList;
     }
 }
 

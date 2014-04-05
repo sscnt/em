@@ -45,7 +45,7 @@ static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray* categories = [DataProvider parentCategoryObjectsDefault];
-    self.numberOfRows = [categories count];
+    self.numberOfRows = (int)[categories count];
     return self.numberOfRows;
 }
 

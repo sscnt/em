@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UITitleBarView.h"
+#import "UIMultiColumnView.h"
+#import "ParentCategoriesTableManager.h"
+#import "ChildCategoriesTableManager.h"
 
 
 typedef NS_ENUM(NSInteger, UIEmoticonChooserCategoryTableId){
@@ -29,6 +32,10 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
     UIScrollView* _categoriesScrollView;
     UITableView* _parentCategoriesTableView;
     UITableView* _childCategoriesTableView;
+    UIMultiColumnView* _emoticonsColumnView;
+    int _currentParentCategoryId;
+    int _currentChildCategoryId;
+    int _currentSelectedRow;
 }
 
 @property (nonatomic, strong) UIView* view;
@@ -37,5 +44,13 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 - (void)toggleDammyBackgroundView:(BOOL)show;
 
 - (void)placeChildCategoryTableView;
+- (void)placeEmoticonsColumnView:(BOOL)nextToChild;
+
+- (BOOL)pagerShouldPresent;
+- (void)presentToParentCategoryList;
+- (void)presentToChildCategoryList;
+- (void)presentToEmoticonsList;
+
+- (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page;
 
 @end

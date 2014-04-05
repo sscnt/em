@@ -7,17 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIEmoticonsTableView.h"
+#import "EmoticonsTableManager.h"
 
-@interface UIMultiColumnView : UIView
+@interface UIMultiColumnView : UIView <UIScrollViewDelegate, TableManagerDelegate>
 {
-    UIScrollView* columnScrollView;
-    UIView* columnTitleView;
-    NSArray* categoryObjectArray;
-    NSArray* tableViewArray;
+    NSUInteger _numberOfPages;
+    UIScrollView* _columnScrollView;
+    UIView* _columnTitleView;
+    NSMutableArray* _tableViewArray;
+    NSMutableArray* _tableManagerArray;
 }
 
-@property (nonatomic, assign) int numberOfPages;
+@property (nonatomic, assign) int parentCategoryId;
+@property (nonatomic, strong) NSArray* categoryObjectArray;
 @property (nonatomic, assign) int currentPage;
-@property (nonatomic, assign) CGSize viewSize;
+@property (nonatomic, assign) CGSize visibleSize;
+
+- (void)layout;
 
 @end

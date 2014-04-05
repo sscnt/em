@@ -251,13 +251,13 @@ static DataProvider* sharedDataProvider = nil;
     if ([db open]) {
         [db setShouldCacheStatements:YES];
         
-        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"dictionary\" WHERE \"category_id\" == %d ORDER BY \"last_used_time\" DESC;", category_id]];
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"dictionary\" WHERE \"category_id\" == %d ORDER BY \"last_use_time\" DESC;", category_id]];
         while ([rs next]) {
             EmoticonObject* emo = [[EmoticonObject alloc] init];
             emo.id = [rs intForColumn:@"id"];
             emo.emoticon = [rs stringForColumn:@"emoticon"];
             emo.categoryId = [rs intForColumn:@"category_id"];
-            emo.lastUsedTime = [rs intForColumn:@"last_used_time"];
+            emo.lastUseTime = [rs intForColumn:@"last_use_time"];
             emo.addedByUser = ([rs intForColumn:@"added_by_user"] == 0) ? NO : YES;
             [_result addObject:emo];
         }

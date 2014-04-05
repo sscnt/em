@@ -45,7 +45,7 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:self.parentCategoryId];
-    self.numberOfRows = [categories count];
+    self.numberOfRows = (int)[categories count];
     return self.numberOfRows;
 }
 
@@ -73,10 +73,10 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
     NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:self.parentCategoryId];
     CategoryObject* cat = [categories objectAtIndex:indexPath.row];
     if(cat){
-        [self.delegate tableView:tableView didSelectChildCategory:cat.id];
+        [self.delegate tableView:tableView didSelectChildCategory:cat.id AtRow:(int)indexPath.row];
         return;
     }
-    [self.delegate tableView:tableView didSelectChildCategory:0];
+    [self.delegate tableView:tableView didSelectChildCategory:0 AtRow:0];
 }
 
 @end

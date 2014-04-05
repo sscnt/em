@@ -79,28 +79,28 @@ static CategoriesScrollManager* sharedCategoriesScrollManager = nil;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	// フリック操作によるスクロール終了
-	[self scrollVIewFinishScrolling:scrollView];
+	[self scrollViewFinishScrolling:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	if(!decelerate) {
 		// ドラッグ終了 かつ 加速無し
-        [self scrollVIewFinishScrolling:scrollView];
+        [self scrollViewFinishScrolling:scrollView];
 	}
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
 	// setContentOffset: 等によるスクロール終了
-	[self scrollVIewFinishScrolling:scrollView];
+	[self scrollViewFinishScrolling:scrollView];
 
 }
 
-- (void)scrollVIewFinishScrolling:(UIScrollView *)scrollView
+- (void)scrollViewFinishScrolling:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
-    [self.delegate scrollView:scrollView didPageChange:page + 1];
+    [self.delegate scrollView:scrollView didPageChange:(int)page + 1];
 }
 
 @end

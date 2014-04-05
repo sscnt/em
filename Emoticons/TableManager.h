@@ -11,7 +11,9 @@
 @protocol TableManagerDelegate <NSObject>
 @optional
 - (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id;
-- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id;
+- (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id AtRow:(int)row;
+- (void)tableView:(UITableView *)tableView didSelectEmoticon:(int)emoticon_id;
+- (void)tableViewFinishScrolling:(UITableView*)tableView;
 
 @end
 
