@@ -44,7 +44,7 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray* categories = [DataProvider childCategoryObjectsInDefaultParentCategoryId:self.parentCategoryId];
+    NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:self.parentCategoryId];
     self.numberOfRows = [categories count];
     return self.numberOfRows;
 }
@@ -56,7 +56,7 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
         cell = [[UICategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    NSArray* categories = [DataProvider childCategoryObjectsInDefaultParentCategoryId:self.parentCategoryId];
+    NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:self.parentCategoryId];
     CategoryObject* cat = [categories objectAtIndex:indexPath.row];
     if(cat){
         cell.textLabel.text = cat.name;
@@ -70,7 +70,7 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray* categories = [DataProvider childCategoryObjectsInDefaultParentCategoryId:self.parentCategoryId];
+    NSArray* categories = [DataProvider childCategoryObjectsByCategoryId:self.parentCategoryId];
     CategoryObject* cat = [categories objectAtIndex:indexPath.row];
     if(cat){
         [self.delegate tableView:tableView didSelectChildCategory:cat.id];

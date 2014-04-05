@@ -39,22 +39,18 @@ static DataProvider* sharedDataProvider = nil;
 {
     self = [super init];
     if(self){
-        _childCategoryObjectsInDefaultParentCategoryCache = [NSMutableDictionary dictionary];
-        _childCategoryObjectsInUserParentCategoryCache = [NSMutableDictionary dictionary];
-        _parentCategoryObjectsInDefaultTable = nil;
-        _parentCategoryObjectsInUserTable = nil;
+        _childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+        _parentCategoryObjectsDefaultCache = nil;
+        _parentCategoryObjectsUserAddedCache = nil;
     }
     return self;
 }
 
 + (void)cleanCaches
 {
-    [[self instance].childCategoryObjectsInDefaultParentCategoryCache removeAllObjects];
-    [self instance].childCategoryObjectsInDefaultParentCategoryCache = [NSMutableDictionary dictionary];
-    [[self instance].childCategoryObjectsInUserParentCategoryCache removeAllObjects];
-    [self instance].childCategoryObjectsInUserParentCategoryCache = [NSMutableDictionary dictionary];
-    [self instance].parentCategoryObjectsInDefaultTable = nil;
-    [self instance].parentCategoryObjectsInDefaultTable = nil;
+    [[self instance].childCategoryObjectsByCategoryIdCache removeAllObjects];
+    [self instance].childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+    [self instance].parentCategoryObjectsDefaultCache = nil;
 }
 
 #pragma mark Datagase
@@ -96,9 +92,9 @@ static DataProvider* sharedDataProvider = nil;
 
 #pragma mark Category
 
-+ (NSArray*)parentCategoryObjectsInDefaultTable
++ (NSArray*)parentCategoryObjectsDefault
 {
-    NSArray* result = [self instance].parentCategoryObjectsInDefaultTable;
+    NSArray* result = [self instance].parentCategoryObjectsDefaultCache;
     if(result){
         return result;
     }
@@ -111,7 +107,7 @@ static DataProvider* sharedDataProvider = nil;
     if ([db open]) {
         [db setShouldCacheStatements:YES];
         
-        FMResultSet *rs = [db executeQuery:@"SELECT * FROM \"default\" WHERE \"parent_id\" == 0 ORDER BY \"order\" ASC;"];
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM \"categories\" WHERE \"parent_id\" == 0 AND \"added_by_user\" == 0 ORDER BY \"order\" ASC;"];
         while ([rs next]) {
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];
@@ -126,14 +122,14 @@ static DataProvider* sharedDataProvider = nil;
         LOG(@"cannot open database");
     }
     result = [_result copy];
-    [self instance].parentCategoryObjectsInDefaultTable = result;
+    [self instance].parentCategoryObjectsDefaultCache = result;
     return result;
 
 }
 
-+ (NSArray *)childCategoryObjectsInDefaultParentCategoryId:(int)category_id
++ (NSArray*)parentCategoryObjectsUserAdded
 {
-    NSArray* result = [[self instance].childCategoryObjectsInDefaultParentCategoryCache objectForKey:[NSString stringWithFormat:@"%d", category_id]];
+    NSArray* result = [self instance].parentCategoryObjectsDefaultCache;
     if(result){
         return result;
     }
@@ -146,7 +142,7 @@ static DataProvider* sharedDataProvider = nil;
     if ([db open]) {
         [db setShouldCacheStatements:YES];
         
-        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"default\" WHERE \"parent_id\" == %d ORDER BY \"order\" ASC;", category_id]];
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM \"categories\" WHERE \"parent_id\" == 0 AND \"added_by_user\" == 1 ORDER BY \"order\" ASC;"];
         while ([rs next]) {
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];
@@ -161,8 +157,46 @@ static DataProvider* sharedDataProvider = nil;
         LOG(@"cannot open database");
     }
     result = [_result copy];
-    [[self instance].childCategoryObjectsInDefaultParentCategoryCache setObject:result forKey:[NSString stringWithFormat:@"%d", category_id]];
+    [self instance].parentCategoryObjectsDefaultCache = result;
+    return result;
+    
+}
+
++ (NSArray *)childCategoryObjectsByCategoryId:(int)category_id
+{
+    NSArray* result = [[self instance].childCategoryObjectsByCategoryIdCache objectForKey:[NSString stringWithFormat:@"%d", category_id]];
+    if(result){
+        return result;
+    }
+    NSMutableArray* _result = [NSMutableArray array];
+    FMDatabase* db = [self databaseWithFilename:@"categories.sqlite"];
+    if(!db){
+        LOG(@"db is nil.");
+        return nil;
+    }
+    if ([db open]) {
+        [db setShouldCacheStatements:YES];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"categories\" WHERE \"parent_id\" == %d ORDER BY \"order\" ASC;", category_id]];
+        while ([rs next]) {
+            CategoryObject* cat = [[CategoryObject alloc] init];
+            cat.id = [rs intForColumn:@"id"];
+            cat.name = [rs stringForColumn:@"name"];
+            cat.parent_id = [rs intForColumn:@"parent_id"];
+            [_result addObject:cat];
+        }
+        [rs close];
+        [db close];
+    }else{
+        //DBが開けなかったらここ
+        LOG(@"cannot open database");
+    }
+    result = [_result copy];
+    [[self instance].childCategoryObjectsByCategoryIdCache setObject:result forKey:[NSString stringWithFormat:@"%d", category_id]];
     return result;
 }
+
+#pragma mark Emoticons
+
 
 @end

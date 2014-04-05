@@ -38,7 +38,7 @@
         
         //// Title
         _titleBarView = [[UITitleBarView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 44.0f)];
-        [_titleBarView setTitle:NSLocalizedString(@"Emoticons", nil)];
+        [_titleBarView setTitle:NSLocalizedString(@"Categories", nil)];
         [self.view addSubview:_titleBarView];
         
         //// Category list scroll view

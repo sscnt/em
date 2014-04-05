@@ -11,8 +11,11 @@
 @interface UITitleBarView : UIView
 {
     UILabel* _titleLabel;
+    UILabel* _subtitleLabel;
 }
 
 - (void)setTitle:(NSString*)title;
+- (void)setSubtitle:(NSString*)title;
+- (void)setSubtitle:(NSString*)title withDuration:(CGFloat)duration;
 
 @end

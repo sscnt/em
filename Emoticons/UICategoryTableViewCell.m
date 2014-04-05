@@ -14,7 +14,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.textLabel.textAlignment = UITextAlignmentCenter;
         if([UIDevice isCurrentLanguageJapanese]) {
             self.textLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
             if([UIDevice isIOS6]){

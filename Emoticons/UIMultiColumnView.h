@@ -18,5 +18,6 @@
 
 @property (nonatomic, assign) int numberOfPages;
 @property (nonatomic, assign) int currentPage;
+@property (nonatomic, assign) CGSize viewSize;
 
 @end
