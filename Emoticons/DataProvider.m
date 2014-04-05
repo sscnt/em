@@ -77,6 +77,11 @@ static DataProvider* sharedDataProvider = nil;
         
         if (success) {
             LOG(@"Database file %@ copied.", filename);
+            
+            NSURL *databaseUrl = [NSURL fileURLWithPath:databasePath];
+            if(![UIDevice addSkipBackupAttributeToItemAtURL:databaseUrl]){
+                LOG(@"Failed to add skip attr.");
+            }
         } else {
             NSLog(@"Error: %@", error);
             return nil;
@@ -141,7 +146,7 @@ static DataProvider* sharedDataProvider = nil;
     if ([db open]) {
         [db setShouldCacheStatements:YES];
         
-        FMResultSet *rs = [db executeQuery:@"SELECT * FROM \"default\" WHERE \"parent_id\" == 1 ORDER BY \"order\" ASC;"];
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"default\" WHERE \"parent_id\" == %d ORDER BY \"order\" ASC;", category_id]];
         while ([rs next]) {
             CategoryObject* cat = [[CategoryObject alloc] init];
             cat.id = [rs intForColumn:@"id"];

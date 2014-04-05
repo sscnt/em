@@ -22,9 +22,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
         _titleLabel.numberOfLines = 0;
-        NSArray *langs = [NSLocale preferredLanguages];
-        NSString *currentLanguage = [langs objectAtIndex:0];
-        if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+        if([UIDevice isCurrentLanguageJapanese]) {
             _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
             if([UIDevice isIOS6]){
                 _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);

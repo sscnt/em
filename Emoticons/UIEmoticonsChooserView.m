@@ -62,6 +62,7 @@
         [_categoriesScrollView addSubview:_parentCategoriesTableView];
         
         
+        [ChildCategoriesTableManager instance].delegate = self;
     }
     return self;
 }
@@ -95,7 +96,6 @@
     _childCategoriesTableView.delegate = [ChildCategoriesTableManager instance];
     _childCategoriesTableView.dataSource = [ChildCategoriesTableManager instance];
     _childCategoriesTableView.backgroundColor = [UIColor clearColor];
-    [ChildCategoriesTableManager instance].delegate = self;
     _childCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
     [_categoriesScrollView addSubview:_childCategoriesTableView];
 }
@@ -150,6 +150,7 @@
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
 {
     LOG(@"page was changed %d", page);
+    _categoriesScrollView.contentOffset = CGPointMake(self.visibleSize.width * (page - 1), 0.0f);
     if(page == UIEmoticonChooserCurrentPageIdChildCategory){
         _categoriesScrollView.scrollEnabled = YES;
         [CategoriesScrollManager instance].limitDirection = YES;

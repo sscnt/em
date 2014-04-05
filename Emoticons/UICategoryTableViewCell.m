@@ -14,7 +14,23 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        if([UIDevice isCurrentLanguageJapanese]) {
+            self.textLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+            if([UIDevice isIOS6]){
+                
+            }else{
+                
+            }
+        } else {
+            self.textLabel.font = [UIFont fontWithName:@"SheepSansBold" size:18.0f];
+            if([UIDevice isIOS6]){
+                
+            }else{
+                
+            }
+        }
+
     }
     return self;
 }

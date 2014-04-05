@@ -71,7 +71,13 @@ static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate tableView:tableView didSelectParentCategory:1];
+    NSArray* categories = [DataProvider parentCategoryObjectsInDefaultTable];
+    CategoryObject* cat = [categories objectAtIndex:indexPath.row];
+    if(cat){
+        [self.delegate tableView:tableView didSelectParentCategory:cat.id];
+        return;
+    }
+    [self.delegate tableView:tableView didSelectParentCategory:0];
 }
 
 @end

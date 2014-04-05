@@ -29,4 +29,7 @@ enum {
 + (BOOL)canOpenTwitter;
 + (BOOL)isCurrentLanguageJapanese;
 
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
+
 @end
