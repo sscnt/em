@@ -10,4 +10,8 @@
 
 @interface CategoryObject : NSObject
 
+@property (nonatomic, assign) int id;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic, assign) int parent_id;
+
 @end

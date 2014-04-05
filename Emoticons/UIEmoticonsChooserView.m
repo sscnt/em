@@ -61,14 +61,6 @@
         _parentCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
         [_categoriesScrollView addSubview:_parentCategoriesTableView];
         
-        //// Child categories table view
-        _childCategoriesTableView = [[UITableView alloc] initWithFrame:frame];
-        _childCategoriesTableView.delegate = [ChildCategoriesTableManager instance];
-        _childCategoriesTableView.dataSource = [ChildCategoriesTableManager instance];
-        _childCategoriesTableView.backgroundColor = [UIColor clearColor];
-        [ChildCategoriesTableManager instance].delegate = self;
-        _childCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
-        [_categoriesScrollView addSubview:_childCategoriesTableView];
         
     }
     return self;
@@ -86,8 +78,26 @@
     
     //// Category
     _parentCategoriesTableView.frame = categoryTableVisibleRect;
-    _childCategoriesTableView.frame = categoryTableVisibleRect;
-    [_childCategoriesTableView setX:visibleSize.width];
+}
+
+#pragma mark Placement
+
+- (void)placeChildCategoryTableView
+{
+    if(_childCategoriesTableView){
+        [_childCategoriesTableView removeFromSuperview];
+        _childCategoriesTableView = nil;
+    }
+    
+    CGRect categoryTableVisibleRect = CGRectMake(_visibleSize.width, 0.0f, _categoriesScrollView.frame.size.width, _visibleSize.height - _titleBarView.frame.size.height);
+    
+    _childCategoriesTableView = [[UITableView alloc] initWithFrame:categoryTableVisibleRect];
+    _childCategoriesTableView.delegate = [ChildCategoriesTableManager instance];
+    _childCategoriesTableView.dataSource = [ChildCategoriesTableManager instance];
+    _childCategoriesTableView.backgroundColor = [UIColor clearColor];
+    [ChildCategoriesTableManager instance].delegate = self;
+    _childCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
+    [_categoriesScrollView addSubview:_childCategoriesTableView];
 }
 
 #pragma mark TableManager delegate
@@ -96,6 +106,8 @@
 - (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id
 {
     LOG(@"Parent category %d was selected.", category_id);
+    [ChildCategoriesTableManager instance].parentCategoryId = category_id;
+    [self placeChildCategoryTableView];
     [self presentToChildCategoryList];
 }
 
@@ -104,7 +116,6 @@
 - (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id
 {
     LOG(@"CHild category %d was selected.", category_id);
-    [self presentToParentCategoryList];
 }
 
 

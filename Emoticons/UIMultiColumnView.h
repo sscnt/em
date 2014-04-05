@@ -12,8 +12,8 @@
 {
     UIScrollView* columnScrollView;
     UIView* columnTitleView;
-    NSMutableArray* categoryObjectArray;
-    NSMutableArray* tableViewArray;
+    NSArray* categoryObjectArray;
+    NSArray* tableViewArray;
 }
 
 @property (nonatomic, assign) int numberOfPages;

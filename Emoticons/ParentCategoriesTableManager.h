@@ -6,10 +6,12 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TableManager.h"
+#import "UICategoryTableViewCell.h"
 
 @interface ParentCategoriesTableManager : TableManager
+
+@property (nonatomic, assign) int numberOfRows;
 
 + (ParentCategoriesTableManager*)instance;
 

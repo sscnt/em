@@ -44,7 +44,9 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSArray* categories = [DataProvider childCategoryObjectsInDefaultParentCategoryId:self.parentCategoryId];
+    self.numberOfRows = [categories count];
+    return self.numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,7 +55,13 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
     if (!cell) {
         cell = [[UICategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = @"fuga";
+    
+    NSArray* categories = [DataProvider childCategoryObjectsInDefaultParentCategoryId:self.parentCategoryId];
+    CategoryObject* cat = [categories objectAtIndex:indexPath.row];
+    if(cat){
+        cell.textLabel.text = cat.name;
+    }
+    
     
     return cell;
 }

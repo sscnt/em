@@ -11,6 +11,9 @@
 
 @interface ChildCategoriesTableManager : TableManager
 
+@property (nonatomic, assign) int parentCategoryId;
+@property (nonatomic, assign) int numberOfRows;
+
 + (ChildCategoriesTableManager*)instance;
 
 @end

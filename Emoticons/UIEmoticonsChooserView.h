@@ -36,4 +36,6 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 
 - (void)toggleDammyBackgroundView:(BOOL)show;
 
+- (void)placeChildCategoryTableView;
+
 @end

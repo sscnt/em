@@ -44,18 +44,27 @@ static ParentCategoriesTableManager* sharedParentCategoriesDataSource = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSArray* categories = [DataProvider parentCategoryObjectsInDefaultTable];
+    self.numberOfRows = [categories count];
+    return self.numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UICategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UICategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = @"hoge";
+    
+    NSArray* categories = [DataProvider parentCategoryObjectsInDefaultTable];
+    CategoryObject* cat = [categories objectAtIndex:indexPath.row];
+    if(cat){
+        cell.textLabel.text = cat.name;
+    }
+    
     
     return cell;
+
 }
 
 #pragma mark table events
