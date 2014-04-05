@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary* childCategoryObjectsByCategoryIdCache;
 @property (nonatomic, strong) NSMutableDictionary* emoticonsObjectsByCategoryIdCache;
+@property (nonatomic, strong) NSMutableDictionary* childCategoryCountByParentCategoryIdCache;
 @property (nonatomic, strong) NSArray* parentCategoryObjectsDefaultCache;
 @property (nonatomic, strong) NSArray* parentCategoryObjectsUserAddedCache;
 
@@ -29,6 +30,7 @@
 + (NSArray*)parentCategoryObjectsDefault;
 + (NSArray*)parentCategoryObjectsUserAdded;
 + (NSArray*)childCategoryObjectsByCategoryId:(int)category_id;
++ (int)childCategoryCountByParentCategoryId:(int)category_id;
 
 + (NSArray*)emoticonObjectsByCategoryId:(int)category_id;
 

@@ -41,6 +41,7 @@ static DataProvider* sharedDataProvider = nil;
     if(self){
         _childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
         _emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+        _childCategoryCountByParentCategoryIdCache = [NSMutableDictionary dictionary];
         _parentCategoryObjectsDefaultCache = nil;
         _parentCategoryObjectsUserAddedCache = nil;
     }
@@ -51,6 +52,10 @@ static DataProvider* sharedDataProvider = nil;
 {
     [[self instance].childCategoryObjectsByCategoryIdCache removeAllObjects];
     [self instance].childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+    [[self instance].emoticonsObjectsByCategoryIdCache removeAllObjects];
+    [self instance].emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
+    [[self instance].childCategoryCountByParentCategoryIdCache removeAllObjects];
+    [self instance].childCategoryCountByParentCategoryIdCache = [NSMutableDictionary dictionary];
     [self instance].parentCategoryObjectsDefaultCache = nil;
     [self instance].parentCategoryObjectsUserAddedCache = nil;
 }
@@ -196,6 +201,36 @@ static DataProvider* sharedDataProvider = nil;
     result = [_result copy];
     [[self instance].childCategoryObjectsByCategoryIdCache setObject:result forKey:[NSString stringWithFormat:@"%d", category_id]];
     return result;
+}
+
++ (int)childCategoryCountByParentCategoryId:(int)category_id
+{
+    NSNumber* countNumber = [[self instance].childCategoryCountByParentCategoryIdCache objectForKey:[NSString stringWithFormat:@"%d", category_id]];
+    if(countNumber){
+        return [countNumber intValue];
+    }
+    
+    FMDatabase* db = [self databaseWithFilename:@"categories.sqlite"];
+    if(!db){
+        LOG(@"db is nil.");
+        return 0;
+    }
+    if ([db open]) {
+        [db setShouldCacheStatements:YES];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM \"categories\" WHERE \"parent_id\" == %d;", category_id]];
+        while ([rs next]) {
+            countNumber = [NSNumber numberWithInt:[rs intForColumn:@"count"]];
+        }
+        [rs close];
+        [db close];
+    }else{
+        //DBが開けなかったらここ
+        LOG(@"cannot open database");
+    }
+    
+    [[self instance].childCategoryCountByParentCategoryIdCache setObject:countNumber forKey:[NSString stringWithFormat:@"%d", category_id]];
+    return [countNumber intValue];
 }
 
 #pragma mark Emoticons
