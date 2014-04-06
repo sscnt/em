@@ -36,7 +36,6 @@
     if(emo){
         cell.textLabel.text = emo.emoticon;
     }
-    cell.backgroundColor = [UIColor greenColor];
     return cell;
 }
 

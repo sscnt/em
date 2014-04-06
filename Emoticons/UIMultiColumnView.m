@@ -14,24 +14,25 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _currentPage = 1;
         _visibleSize = frame.size;
         _tableViewArray = [NSMutableArray array];
         _tableManagerArray = [NSMutableArray array];
         
         //// Scroll view
-        _columnScrollView = [[UIScrollView alloc] initWithFrame:frame];
-        _columnScrollView.delegate = self;
-        _columnScrollView.showsHorizontalScrollIndicator = NO;
-        _columnScrollView.showsVerticalScrollIndicator = NO;
-        _columnScrollView.pagingEnabled = YES;
-        _columnScrollView.bounces = NO;
-        _columnScrollView.scrollEnabled = YES;
-        _columnScrollView.backgroundColor = [UIColor blueColor];
-        [self addSubview:_columnScrollView];
+        _scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        _scrollView.delegate = self;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.pagingEnabled = YES;
+        _scrollView.bounces = NO;
+        _scrollView.scrollEnabled = YES;
+        _scrollView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_scrollView];
         
         //// Title
-        _columnTitleView = [[UIView alloc] initWithFrame:frame];
-        [self addSubview:_columnTitleView];
+        _titleView = [[UIMultiColumnTitleView alloc] initWithFrame:frame];
+        [self addSubview:_titleView];
     }
     return self;
 }
@@ -60,11 +61,14 @@
 {
     CGFloat titleHeight = 44.0f;
     CGRect tableViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height - titleHeight);
-    CGRect titleViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width * _numberOfPages, titleHeight);
-    _columnTitleView.frame = titleViewFrame;
+    CGRect titleViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, titleHeight);
+    CGSize titleViewContentsSize = CGSizeMake(_visibleSize.width * _numberOfPages, titleHeight);
+    CGFloat titleLabelWidth = _visibleSize.width * 0.30f;
+    _titleView.frame = titleViewFrame;
+    _titleView.contentsSize = titleViewContentsSize;
     
-    _columnScrollView.frame = CGRectMake(0.0f, titleHeight, _visibleSize.width, _visibleSize.height - titleHeight);;
-    _columnScrollView.contentSize = CGSizeMake(_visibleSize.width * _numberOfPages, _visibleSize.height - titleHeight);
+    _scrollView.frame = CGRectMake(0.0f, titleHeight, _visibleSize.width, _visibleSize.height - titleHeight);;
+    _scrollView.contentSize = CGSizeMake(_visibleSize.width * _numberOfPages, _visibleSize.height - titleHeight);
     
     for (int i = 0; i < _numberOfPages; i++) {
         if([_categoryObjectArray objectAtIndex:i]){
@@ -80,10 +84,20 @@
             table.frame = tableViewFrame;
             table.bounces = NO;
             [table setX:i * _visibleSize.width];
-            table.backgroundColor = [UIColor redColor];
+            table.backgroundColor = [UIColor clearColor];
             [_tableManagerArray addObject:manager];
             [_tableViewArray addObject:table];
-            [_columnScrollView addSubview:table];
+            [_scrollView addSubview:table];
+            
+            UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(titleLabelWidth * (CGFloat)i, 0.0f, titleLabelWidth, titleHeight)];
+            label.text = cat.name;
+            label.backgroundColor = [UIColor clearColor];
+            label.textAlignment = UITextAlignmentCenter;
+            label.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:12.0f];
+            label.minimumFontSize = 10.0f;
+            label.adjustsFontSizeToFitWidth = YES;
+            label.textColor = [UIColor blackColor];
+            [_titleView addTitleView:label];
         }
     }
     
@@ -98,7 +112,20 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    if(_currentPage == 1 || _currentPage > _numberOfPages){
+        return;
+    }
+    CGPoint currentPoint = [scrollView contentOffset];
+    CGFloat w = scrollView.frame.size.width * (CGFloat)(_currentPage - 1);
+    CGFloat ratio = (currentPoint.x - w) / scrollView.frame.size.width;
+    if (ratio > 0.0f) {
+        //// Presenting right
+        [_titleView willPresentToPage:_currentPage + 1 WithRatio:ratio];
+    }else{
+        //// Presenting left
+        ratio = -ratio;
+        [_titleView willPresentToPage:_currentPage - 1 WithRatio:ratio];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -122,7 +149,19 @@
 - (void)scrollViewFinishScrolling:(UIScrollView *)scrollView
 {
     
+    CGFloat pageWidth = scrollView.frame.size.width;
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    _currentPage = roundf(fractionalPage) + 1;
+    _titleView.currentPage = _currentPage;
 }
 
+#pragma mark dealloc
+
+- (void)dealloc
+{
+    [_tableManagerArray removeAllObjects];
+    [_tableViewArray removeAllObjects];
+    _scrollView.delegate = nil;
+}
 
 @end

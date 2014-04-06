@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5801845818F151F600121B36 /* UIMultiColumnTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5801845718F151F600121B36 /* UIMultiColumnTitleView.m */; };
 		5804B5FD18F0499D00AA6CB1 /* UIEmoticonsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5804B5FC18F0499D00AA6CB1 /* UIEmoticonsTableView.m */; };
 		5804B60018F0548B00AA6CB1 /* EmoticonsTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5804B5FF18F0548B00AA6CB1 /* EmoticonsTableManager.m */; };
 		5804B60318F0591700AA6CB1 /* UIEmoticonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5804B60218F0591700AA6CB1 /* UIEmoticonTableViewCell.m */; };
@@ -72,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5801845618F151F600121B36 /* UIMultiColumnTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMultiColumnTitleView.h; sourceTree = "<group>"; };
+		5801845718F151F600121B36 /* UIMultiColumnTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMultiColumnTitleView.m; sourceTree = "<group>"; };
 		5804B5FB18F0499D00AA6CB1 /* UIEmoticonsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEmoticonsTableView.h; sourceTree = "<group>"; };
 		5804B5FC18F0499D00AA6CB1 /* UIEmoticonsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEmoticonsTableView.m; sourceTree = "<group>"; };
 		5804B5FE18F0548B00AA6CB1 /* EmoticonsTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonsTableManager.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				58FC0EB718EDB19A0079637F /* UIEmoticonsChooserView.m */,
 				58078BD418EF033800AC301E /* UIMultiColumnView.h */,
 				58078BD518EF033800AC301E /* UIMultiColumnView.m */,
+				5801845618F151F600121B36 /* UIMultiColumnTitleView.h */,
+				5801845718F151F600121B36 /* UIMultiColumnTitleView.m */,
 			);
 			name = Chooser;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
 				58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */,
 				58FC0EAD18EDAA1C0079637F /* FMDatabase.m in Sources */,
+				5801845818F151F600121B36 /* UIMultiColumnTitleView.m in Sources */,
 				58F2ED4D18EEAE3A00FB6A2D /* DataProvider.m in Sources */,
 				58FC0EB818EDB19A0079637F /* UIEmoticonsChooserView.m in Sources */,
 				5804B60018F0548B00AA6CB1 /* EmoticonsTableManager.m in Sources */,

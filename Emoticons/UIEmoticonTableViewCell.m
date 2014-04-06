@@ -16,7 +16,10 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.textLabel.textAlignment = UITextAlignmentCenter;        
+        self.textLabel.textAlignment = UITextAlignmentCenter;
+        self.textLabel.font = [UIFont systemFontOfSize:16.0f];
+        self.textLabel.minimumFontSize = 12.0f;
+        self.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     return self;
 }

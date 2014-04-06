@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "UIEmoticonsTableView.h"
 #import "EmoticonsTableManager.h"
+#import "UIMultiColumnTitleView.h"
 
 @interface UIMultiColumnView : UIView <UIScrollViewDelegate, TableManagerDelegate>
 {
     NSUInteger _numberOfPages;
-    UIScrollView* _columnScrollView;
-    UIView* _columnTitleView;
+    int _currentPage;
+    UIScrollView* _scrollView;
+    UIMultiColumnTitleView* _titleView;
     NSMutableArray* _tableViewArray;
     NSMutableArray* _tableManagerArray;
 }
