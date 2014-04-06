@@ -36,12 +36,21 @@
     }
 }
 
+- (void)setHighlighted:(BOOL)highlighted
+{
+    _highlighted = highlighted;
+    [self setNeedsDisplay];
+}
+
 #pragma mark type back
 
 - (void)drawRectTypeBack:(CGRect)rect
 {
     //// Color Declarations
-    UIColor* color = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+    UIColor* color = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.80f];
+    if(_highlighted){
+        color = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+    }
     
     //// Bezier Drawing
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];

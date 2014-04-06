@@ -49,10 +49,14 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 - (void)placeEmoticonsColumnView:(BOOL)nextToChild;
 
 - (BOOL)pagerShouldPresent;
+- (void)pageWillBeBack;
 - (void)presentToParentCategoryList;
 - (void)presentToChildCategoryList;
 - (void)presentToEmoticonsList;
+- (void)presentToPreviousPage;
 
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page;
+
+- (void)backButtonDidTouch:(UITitleBarButton*)button;
 
 @end

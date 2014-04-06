@@ -11,6 +11,7 @@
 @protocol CategoriesScrollManagerDelegate <NSObject>
 @optional
 -(void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page;
+-(void)scrollViewWillPresentToPreviousPage:(UIScrollView *)scrollView;
 
 @end
 

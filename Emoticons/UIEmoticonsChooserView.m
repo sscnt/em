@@ -43,7 +43,9 @@
         
         //////// Back
         _backButton = [[UITitleBarButton alloc] initWithType:UITitleBarButtonTypeBack];
+        [_backButton addTarget:self action:@selector(backButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
         [_titleBarView addButtonToLeft:_backButton];
+        [_titleBarView hideLeftButton];
         
         
         //// Category list scroll view
@@ -140,6 +142,7 @@
         [self placeChildCategoryTableView];
         [self presentToChildCategoryList];
     }
+    [_titleBarView showLeftButtonWithDuration:0.10f];
 }
 
 #pragma mark Children
@@ -159,6 +162,27 @@
 }
 
 #pragma mark present
+
+- (void)pageWillBeBack
+{
+    switch (_currentPage) {
+        case UIEmoticonChooserCurrentPageIdEmoticonsList:
+        {
+            int number_of_child = [DataProvider childCategoryCountByParentCategoryId:_currentParentCategoryId];
+            if(number_of_child == 0){
+                [_titleBarView hideLeftButtonWithDuration:0.10f];
+            }
+        }
+            break;
+        case UIEmoticonChooserCurrentPageIdChildCategory:
+            [_titleBarView hideLeftButtonWithDuration:0.10f];
+            break;
+        case UIEmoticonChooserCurrentPageIdParentCategory:
+            break;
+        default:
+            break;
+    }
+}
 
 - (BOOL)pagerShouldPresent
 {
@@ -197,7 +221,37 @@
     }
 }
 
+- (void)presentToPreviousPage
+{
+    if([self pagerShouldPresent]){
+        switch (_currentPage) {
+            case UIEmoticonChooserCurrentPageIdEmoticonsList:
+            {
+                int number_of_child = [DataProvider childCategoryCountByParentCategoryId:_currentParentCategoryId];
+                if(number_of_child == 0){
+                    [self presentToParentCategoryList];
+                }else{
+                    [self presentToChildCategoryList];
+                }
+            }
+                break;
+            case UIEmoticonChooserCurrentPageIdChildCategory:
+                [self presentToParentCategoryList];
+                break;
+            case UIEmoticonChooserCurrentPageIdParentCategory:
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 #pragma mark scrollview delegate
+
+- (void)scrollViewWillPresentToPreviousPage:(UIScrollView *)scrollView
+{
+    [self pageWillBeBack];
+}
 
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
 {
@@ -207,6 +261,20 @@
         _categoriesScrollView.scrollEnabled = YES;
         [CategoriesScrollManager instance].limitDirection = YES;
     }
+    if(page == UIEmoticonChooserCurrentPageIdParentCategory){
+        [_titleBarView hideLeftButtonWithDuration:0.10f];
+    }else{
+        [_titleBarView showLeftButtonWithDuration:0.10f];
+    }
+}
+
+#pragma mark back button
+
+- (void)backButtonDidTouch:(UITitleBarButton *)button
+{
+    [self pageWillBeBack];
+    [self presentToPreviousPage];
+
 }
 
 - (void)dealloc

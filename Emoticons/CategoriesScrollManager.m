@@ -39,12 +39,17 @@ static CategoriesScrollManager* sharedCategoriesScrollManager = nil;
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    
     _scrolling_direction = 0;
     _cancelDecelerating = NO;
     _scrollPrevPoint = [scrollView contentOffset];
 }
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if(velocity.x < 0.0f){
+        [self.delegate scrollViewWillPresentToPreviousPage:scrollView];
+    }
+}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

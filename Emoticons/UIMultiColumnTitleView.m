@@ -18,6 +18,7 @@
         _currentPage = 0;
         _labelArray = [NSMutableArray array];
         self.backgroundColor = [UIColor colorWithWhite:0.98f alpha:1.0f];
+        self.clipsToBounds = YES;
         _contentsView = [[UIView alloc] initWithFrame:frame];
         _contentsView.backgroundColor = [UIColor clearColor];
         [self addSubview:_contentsView];

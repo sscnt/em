@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, UITitleBarButtonType){
 @interface UITitleBarButton : UIButton
 {
     UITitleBarButtonType _type;
+    BOOL _highlighted;
 }
 
 - (id)initWithType:(UITitleBarButtonType)type;

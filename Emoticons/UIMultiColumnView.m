@@ -96,7 +96,7 @@
             label.text = cat.name;
             label.backgroundColor = [UIColor clearColor];
             label.textAlignment = UITextAlignmentCenter;
-            label.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:12.0f];
+            label.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:13.0f];
             label.minimumFontSize = 10.0f;
             label.adjustsFontSizeToFitWidth = YES;
             label.textColor = [UIColor blackColor];
