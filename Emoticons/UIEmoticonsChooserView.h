@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UITitleBarView.h"
+#import "UITitleBarButton.h"
 #import "UIMultiColumnView.h"
 #import "ParentCategoriesTableManager.h"
 #import "ChildCategoriesTableManager.h"
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
     int _currentSelectedRow;
 }
 
+@property (nonatomic, strong) UITitleBarButton* backButton;
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, assign) CGSize visibleSize;
 

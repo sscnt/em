@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITitleBarButton.h"
 
 @interface UITitleBarView : UIView
 {
@@ -17,5 +18,8 @@
 - (void)setTitle:(NSString*)title;
 - (void)setSubtitle:(NSString*)title;
 - (void)setSubtitle:(NSString*)title withDuration:(CGFloat)duration;
+
+- (void)addButtonToLeft:(UITitleBarButton*)button;
+- (void)addButtonToRight:(UITitleBarButton*)button;
 
 @end

@@ -47,9 +47,20 @@
     _titleLabel.text = title;
 }
 
+- (void)addButtonToLeft:(UITitleBarButton *)button
+{
+    [button setX:0.0f];
+    [self addSubview:button];
+}
+
+- (void)addButtonToRight:(UITitleBarButton *)button
+{
+    [button setX:self.frame.size.width - button.frame.size.width];
+    [self addSubview:button];
+}
+
 - (void)drawRect:(CGRect)rect
 {
-    
     //// Rectangle Drawing
     UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0.0f, rect.size.height - 3.0f, rect.size.width, 0.5)];
     [[UIColor whiteColor] setFill];

@@ -41,6 +41,11 @@
         [_titleBarView setTitle:NSLocalizedString(@"Categories", nil)];
         [self.view addSubview:_titleBarView];
         
+        //////// Back
+        _backButton = [[UITitleBarButton alloc] initWithType:UITitleBarButtonTypeBack];
+        [_titleBarView addButtonToLeft:_backButton];
+        
+        
         //// Category list scroll view
         _categoriesScrollView = [[UIScrollView alloc] initWithFrame:frame];
         _categoriesScrollView.delegate = [CategoriesScrollManager instance];

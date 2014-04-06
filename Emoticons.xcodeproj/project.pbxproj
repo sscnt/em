@@ -16,6 +16,7 @@
 		58078BD618EF033800AC301E /* UIMultiColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BD518EF033800AC301E /* UIMultiColumnView.m */; };
 		58078BDA18EF14C100AC301E /* CategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BD918EF14C100AC301E /* CategoryObject.m */; };
 		58078BDD18EF14D000AC301E /* EmoticonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 58078BDC18EF14D000AC301E /* EmoticonObject.m */; };
+		580F057118F19A1800A5FB56 /* UITitleBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 580F057018F19A1800A5FB56 /* UITitleBarButton.m */; };
 		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
 		58F2ED4D18EEAE3A00FB6A2D /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */; };
 		58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED5018EEB3EF00FB6A2D /* ParentCategoriesTableManager.m */; };
@@ -91,6 +92,8 @@
 		58078BD918EF14C100AC301E /* CategoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryObject.m; sourceTree = "<group>"; };
 		58078BDB18EF14D000AC301E /* EmoticonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonObject.h; sourceTree = "<group>"; };
 		58078BDC18EF14D000AC301E /* EmoticonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonObject.m; sourceTree = "<group>"; };
+		580F056F18F19A1800A5FB56 /* UITitleBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITitleBarButton.h; sourceTree = "<group>"; };
+		580F057018F19A1800A5FB56 /* UITitleBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITitleBarButton.m; sourceTree = "<group>"; };
 		58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		58F2ED4B18EEAE3A00FB6A2D /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
 		58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
@@ -222,6 +225,17 @@
 				58078BDC18EF14D000AC301E /* EmoticonObject.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		580F056E18F199FA00A5FB56 /* Title Bar */ = {
+			isa = PBXGroup;
+			children = (
+				58FC0EB318EDAA4F0079637F /* UITitleBarView.h */,
+				58FC0EB418EDAA4F0079637F /* UITitleBarView.m */,
+				580F056F18F19A1800A5FB56 /* UITitleBarButton.h */,
+				580F057018F19A1800A5FB56 /* UITitleBarButton.m */,
+			);
+			name = "Title Bar";
 			sourceTree = "<group>";
 		};
 		58F2ED4E18EEB39E00FB6A2D /* TableManager */ = {
@@ -366,10 +380,9 @@
 		58FC0E9418EDA7F40079637F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				580F056E18F199FA00A5FB56 /* Title Bar */,
 				58078BD018EEF04800AC301E /* Table */,
 				58FBA26618EDCFCA00A68C26 /* Chooser */,
-				58FC0EB318EDAA4F0079637F /* UITitleBarView.h */,
-				58FC0EB418EDAA4F0079637F /* UITitleBarView.m */,
 				58FBA25D18EDBA8400A68C26 /* UIBackgroundView.h */,
 				58FBA25E18EDBA8400A68C26 /* UIBackgroundView.m */,
 			);
@@ -581,6 +594,7 @@
 				58FBA26B18EDF47C00A68C26 /* RootViewController.m in Sources */,
 				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
 				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
+				580F057118F19A1800A5FB56 /* UITitleBarButton.m in Sources */,
 				58FC0EB018EDAA1C0079637F /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
