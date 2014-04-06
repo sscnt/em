@@ -181,6 +181,7 @@
 - (void)presentToEmoticonsList
 {
     if([self pagerShouldPresent]){
+        _emoticonsColumnView.currentPage = _currentSelectedRow + 1;
         if(_currentPage == UIEmoticonChooserCurrentPageIdChildCategory){
             [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width * 2.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         }

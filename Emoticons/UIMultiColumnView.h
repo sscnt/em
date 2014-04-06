@@ -27,5 +27,6 @@
 @property (nonatomic, assign) CGSize visibleSize;
 
 - (void)layout;
+- (void)showTableAtPage:(int)page;
 
 @end

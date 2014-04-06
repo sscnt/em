@@ -45,7 +45,10 @@
 
 -(void)setCurrentPage:(int)currentPage
 {
-    
+    _currentPage = currentPage;
+    _titleView.currentPage = currentPage;
+    _scrollView.contentOffset = CGPointMake(_visibleSize.width * (CGFloat)(currentPage - 1), 0.0f);
+    [self showTableAtPage:currentPage];
 }
 
 - (void)setCategoryObjectArray:(NSArray *)categoryObjectArray
@@ -62,13 +65,13 @@
     CGFloat titleHeight = 44.0f;
     CGRect tableViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height - titleHeight);
     CGRect titleViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, titleHeight);
-    CGSize titleViewContentsSize = CGSizeMake(_visibleSize.width * _numberOfPages, titleHeight);
     CGFloat titleLabelWidth = _visibleSize.width * 0.30f;
+    CGSize titleViewContentsSize = CGSizeMake(titleLabelWidth * (CGFloat)_numberOfPages, titleHeight);
     _titleView.frame = titleViewFrame;
     _titleView.contentsSize = titleViewContentsSize;
     
     _scrollView.frame = CGRectMake(0.0f, titleHeight, _visibleSize.width, _visibleSize.height - titleHeight);;
-    _scrollView.contentSize = CGSizeMake(_visibleSize.width * _numberOfPages, _visibleSize.height - titleHeight);
+    _scrollView.contentSize = CGSizeMake(_visibleSize.width * (CGFloat)_numberOfPages, _visibleSize.height - titleHeight);
     
     for (int i = 0; i < _numberOfPages; i++) {
         if([_categoryObjectArray objectAtIndex:i]){
@@ -87,7 +90,7 @@
             table.backgroundColor = [UIColor clearColor];
             [_tableManagerArray addObject:manager];
             [_tableViewArray addObject:table];
-            [_scrollView addSubview:table];
+            //[_scrollView addSubview:table];
             
             UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(titleLabelWidth * (CGFloat)i, 0.0f, titleLabelWidth, titleHeight)];
             label.text = cat.name;
@@ -112,19 +115,20 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if(_currentPage == 1 || _currentPage > _numberOfPages){
-        return;
-    }
     CGPoint currentPoint = [scrollView contentOffset];
     CGFloat w = scrollView.frame.size.width * (CGFloat)(_currentPage - 1);
     CGFloat ratio = (currentPoint.x - w) / scrollView.frame.size.width;
     if (ratio > 0.0f) {
-        //// Presenting right
-        [_titleView willPresentToPage:_currentPage + 1 WithRatio:ratio];
+        if(_currentPage < _numberOfPages){
+            //// Presenting right
+            [_titleView willPresentToPage:_currentPage + 1 WithRatio:ratio];
+        }
     }else{
-        //// Presenting left
-        ratio = -ratio;
-        [_titleView willPresentToPage:_currentPage - 1 WithRatio:ratio];
+        if(_currentPage > 1){
+            //// Presenting left
+            ratio = -ratio;
+            [_titleView willPresentToPage:_currentPage - 1 WithRatio:ratio];
+        }
     }
 }
 
@@ -151,8 +155,20 @@
     
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
-    _currentPage = roundf(fractionalPage) + 1;
-    _titleView.currentPage = _currentPage;
+    self.currentPage = roundf(fractionalPage) + 1;
+}
+
+- (void)showTableAtPage:(int)page
+{
+    if (page < 1 || page > [_tableViewArray count]) {
+        return;
+    }
+    UIEmoticonsTableView* table = [_tableViewArray objectAtIndex:page - 1];
+    if([table isDescendantOfView:_scrollView]){
+        
+    }else{
+        [_scrollView addSubview:table];
+    }
 }
 
 #pragma mark dealloc
