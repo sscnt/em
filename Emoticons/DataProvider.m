@@ -42,6 +42,7 @@ static DataProvider* sharedDataProvider = nil;
         _childCategoryObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
         _emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
         _childCategoryCountByParentCategoryIdCache = [NSMutableDictionary dictionary];
+        _emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
         _parentCategoryObjectsDefaultCache = nil;
         _parentCategoryObjectsUserAddedCache = nil;
     }
@@ -56,6 +57,8 @@ static DataProvider* sharedDataProvider = nil;
     [self instance].emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
     [[self instance].childCategoryCountByParentCategoryIdCache removeAllObjects];
     [self instance].childCategoryCountByParentCategoryIdCache = [NSMutableDictionary dictionary];
+    [[self instance].emoticonsObjectsByCategoryIdCache removeAllObjects];
+    [self instance].emoticonsObjectsByCategoryIdCache = [NSMutableDictionary dictionary];
     [self instance].parentCategoryObjectsDefaultCache = nil;
     [self instance].parentCategoryObjectsUserAddedCache = nil;
 }
@@ -234,6 +237,39 @@ static DataProvider* sharedDataProvider = nil;
 }
 
 #pragma mark Emoticons
+
++ (EmoticonObject *)emoticonObjectById:(int)emoticon_id
+{
+    if([[self instance].emoticonsObjectByIdCache objectForKeyedSubscript:[NSString stringWithFormat:@"%d", emoticon_id]]){
+        return (EmoticonObject*)[[self instance].emoticonsObjectByIdCache objectForKeyedSubscript:[NSString stringWithFormat:@"%d", emoticon_id]];
+    }
+    
+    FMDatabase* db = [self databaseWithFilename:@"emoticons.sqlite"];
+    if(!db){
+        LOG(@"db is nil.");
+        return nil;
+    }
+    EmoticonObject* emo = nil;
+    if ([db open]) {
+        [db setShouldCacheStatements:YES];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM \"dictionary\" WHERE \"id\" == %d;", emoticon_id]];
+        while ([rs next]) {
+            emo = [[EmoticonObject alloc] init];
+            emo.id = [rs intForColumn:@"id"];
+            emo.emoticon = [rs stringForColumn:@"emoticon"];
+            emo.categoryId = [rs intForColumn:@"category_id"];
+            emo.lastUseTime = [rs intForColumn:@"last_use_time"];
+            emo.addedByUser = ([rs intForColumn:@"added_by_user"] == 0) ? NO : YES;
+        }
+        [rs close];
+        [db close];
+    }else{
+        //DBが開けなかったらここ
+        LOG(@"cannot open database");
+    }
+    return emo;
+}
 
 
 + (NSArray *)emoticonObjectsByCategoryId:(int)category_id

@@ -64,6 +64,6 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page;
 
-- (void)backButtonDidTouch:(UITitleBarButton*)button;
+- (void)backButtonDidPress:(UITitleBarButton*)button;
 
 @end

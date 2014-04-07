@@ -51,6 +51,17 @@
     }
     _chooserView.delegate = self;
     [_scrollView addSubview:_chooserView];
+    
+    //// Editor
+    _editorView = [[UIEditorView alloc] initWithFrame:CGRectMake(10.0f + [UIScreen width], 30.0f, [UIScreen width] - 20.0f, [UIScreen height] - 30.0f)];
+    if([UIDevice isIOS6]){
+        [_editorView setY:10.0f];
+        [_editorView setHeight:[UIScreen height] - 10.0f];
+    }
+    _editorView.hidden = YES;
+    _editorView.delegate = self;
+    [_scrollView addSubview:_editorView];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -62,13 +73,26 @@
 
 - (void)didSelectEmoticon:(int)emoticon_id
 {
-    LOG(@"Emoticon %d selected.", emoticon_id);
-    [self presentToEditorView];
+    EmoticonObject* emo = [DataProvider emoticonObjectById:emoticon_id];
+    if(emo){
+        LOG(@"%@ selected.", emo.emoticon);
+        _editorView.placeholder = emo.emoticon;
+        [self presentToEditorView];
+    }
+}
+
+- (void)backButtonDidPress
+{
+    if (_currentPage == MainViewPageIdEditor) {
+        [self presentToChooserView];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     _chooserView.shadow = NO;
+    _editorView.shadow = NO;
+    _editorView.hidden = NO;
     CGPoint p = scrollView.contentOffset;
     if(p.x < scrollView.frame.size.width * 2.0){
         CGFloat ratio = p.x / scrollView.frame.size.width;
@@ -78,22 +102,29 @@
         CGFloat y = _chooserView.frame.size.height * 1.50f * cosf(angle);
         y = _chooserView.frame.size.height * 1.50f - y;
         y *= ratio;
-        CGFloat scale = 1.0;
         
-        CGAffineTransform concat = CGAffineTransformConcat(CGAffineTransformMakeRotation(angle), CGAffineTransformMakeScale(scale, scale));
-        concat = CGAffineTransformConcat(concat, CGAffineTransformMakeTranslation(x, y));
+        CGAffineTransform concat = CGAffineTransformConcat(CGAffineTransformMakeRotation(angle), CGAffineTransformMakeTranslation(x, y));
         _chooserView.transform = concat;
+        
+        angle = 15.0f * M_PI / 180.0f * (1.0 - ratio);
+        x = _chooserView.frame.size.height * 1.50f * sinf(angle) * (1.0 - ratio);
+        y = _chooserView.frame.size.height * 1.50f * cosf(angle);
+        y = _chooserView.frame.size.height * 1.50f - y;
+        y *= (1.0 - ratio);
+        concat = CGAffineTransformConcat(CGAffineTransformMakeRotation(angle), CGAffineTransformMakeTranslation(x, y));
+        _editorView.transform = concat;
     }
 }
 
 - (void)scrollViewEndScroll:(UIScrollView *)scrollView
 {
     _chooserView.shadow = YES;
+    _editorView.shadow = YES;
 }
 
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
 {
-    
+    _currentPage = page;
 }
 
 
@@ -106,8 +137,12 @@
 
 - (void)presentToEditorView
 {
-    _scrollView.scrollEnabled = YES;
     [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width, 0.0f, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
+}
+
+- (void)presentToChooserView
+{
+    [_scrollView scrollRectToVisible:CGRectMake(0.0f, 0.0f, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,6 +156,7 @@
 {
     _scrollView.delegate = nil;
     _chooserView.delegate = nil;
+    _editorView.delegate = nil;
     [MainViewScrollManager instance].delegate = nil;
 }
 

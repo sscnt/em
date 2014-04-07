@@ -71,6 +71,7 @@
 - (void)showRightButton
 {
     [_rightButton setHidden:NO];
+    [_rightButton setY:0.0f];
 }
 
 - (void)showRightButtonWithDuration:(CGFloat)duration
@@ -100,6 +101,7 @@
 - (void)showLeftButton
 {
     [_leftButton setHidden:NO];
+    [_leftButton setY:0.0f];
 }
 
 - (void)showLeftButtonWithDuration:(CGFloat)duration
@@ -129,6 +131,7 @@
 - (void)hideRightButton
 {
     [_rightButton setHidden:YES];
+    [_rightButton setY:-44.0f];
 }
 
 - (void)hideRightButtonWithDuration:(CGFloat)duration
@@ -158,6 +161,7 @@
 - (void)hideLeftButton
 {
     [_leftButton setHidden:YES];
+    [_leftButton setY:-44.0f];
 }
 
 - (void)hideLeftButtonWithDuration:(CGFloat)duration

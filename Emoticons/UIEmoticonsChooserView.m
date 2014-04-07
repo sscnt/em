@@ -41,7 +41,7 @@
         
         //////// Back
         _backButton = [[UITitleBarButton alloc] initWithType:UITitleBarButtonTypeBack];
-        [_backButton addTarget:self action:@selector(backButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+        [_backButton addTarget:self action:@selector(backButtonDidPress:) forControlEvents:UIControlEventTouchUpInside];
         [_titleBarView addButtonToLeft:_backButton];
         [_titleBarView hideLeftButton];
         
@@ -312,7 +312,7 @@
 
 #pragma mark back button
 
-- (void)backButtonDidTouch:(UITitleBarButton *)button
+- (void)backButtonDidPress:(UITitleBarButton *)button
 {
     if (_isPresenting) {
         return;
