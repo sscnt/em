@@ -24,6 +24,13 @@
     return self;
 }
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    _highlighted = highlighted;
+    [self setNeedsDisplay];
+}
+
 - (void)awakeFromNib
 {
     // Initialization code
@@ -34,6 +41,47 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    
+    if(_highlighted){
+        //// Rectangle Drawing
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: rect];
+        [[UIColor whiteColor] setFill];
+        [rectanglePath fill];
+        
+    }
+
+    if (!_isTopCell) {
+        
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+        [bezierPath moveToPoint: CGPointMake(0.0f, 0.5f)];
+        [bezierPath addLineToPoint: CGPointMake(rect.size.width, 0.5f)];
+        [[CurrentColor cellLightBorderColor] setStroke];
+        bezierPath.lineWidth = 1;
+        [bezierPath stroke];
+    }
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height)];
+    [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height)];
+    [[CurrentColor cellDarkBorderColor] setStroke];
+    bezierPath.lineWidth = 1;
+    [bezierPath stroke];
+    
+    if(_isBottomCell){
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+        [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height + 0.50f)];
+        [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height + 0.50f)];
+        [[CurrentColor cellLightBorderColor] setStroke];
+        bezierPath.lineWidth = 1;
+        [bezierPath stroke];
+    }
 }
 
 @end

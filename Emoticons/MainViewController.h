@@ -10,7 +10,7 @@
 #import "UIBackgroundView.h"
 #import "UIEmoticonsChooserView.h"
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate>
+@interface MainViewController : UIViewController <UIScrollViewDelegate, UIEmoticonsChooserViewDelegate>
 {
     UIScrollView* _scrollView;
     UIEmoticonsChooserView* _chooserView;
@@ -19,5 +19,7 @@
 @property (nonatomic, strong) UIBackgroundView* view;
 
 - (void)presentToSettingsView;
+- (void)presentToEditorView;
+- (void)presentToEditorViewWithText:(NSString*)text;
 
 @end

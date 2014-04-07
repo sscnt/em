@@ -85,6 +85,8 @@
             table.dataSource = manager;
             table.delegate = manager;
             table.frame = tableViewFrame;
+            table.separatorColor = [CurrentColor cellNormalBackgroundColor];
+            table.separatorStyle = UITableViewCellSeparatorStyleNone;
             table.bounces = NO;
             [table setX:i * _visibleSize.width];
             table.backgroundColor = [UIColor clearColor];
@@ -110,7 +112,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectEmoticon:(int)emoticon_id
 {
-    
+    [self.delegate didSelectEmoticon:emoticon_id];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

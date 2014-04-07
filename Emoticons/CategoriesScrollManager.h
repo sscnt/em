@@ -20,6 +20,7 @@
     CGPoint _scrollPrevPoint;
     BOOL _cancelDecelerating;
     int _scrolling_direction;
+    int _currentPage;
 }
 
 @property (nonatomic, assign) BOOL limitDirection;

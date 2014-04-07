@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _currentPage = UIEmoticonChooserCurrentPageIdParentCategory;
+        _backButtonDuration = 0.20f;
         
         //// show only at loading
         _dammyBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, frame.size.width, frame.size.height)];
@@ -64,6 +65,8 @@
         _parentCategoriesTableView.delegate = [ParentCategoriesTableManager instance];
         _parentCategoriesTableView.dataSource = [ParentCategoriesTableManager instance];
         _parentCategoriesTableView.backgroundColor = [UIColor clearColor];
+        _parentCategoriesTableView.separatorColor = [CurrentColor cellNormalBackgroundColor];
+        _parentCategoriesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [ParentCategoriesTableManager instance].delegate = self;
         _parentCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
         [_categoriesScrollView addSubview:_parentCategoriesTableView];
@@ -104,6 +107,8 @@
     _childCategoriesTableView.dataSource = [ChildCategoriesTableManager instance];
     _childCategoriesTableView.backgroundColor = [UIColor clearColor];
     _childCategoriesTableView.tag = UIEmoticonChooserCategoryTableIdParent;
+    _childCategoriesTableView.separatorColor = [CurrentColor cellNormalBackgroundColor];
+    _childCategoriesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_categoriesScrollView addSubview:_childCategoriesTableView];
 }
 
@@ -123,6 +128,7 @@
     _emoticonsColumnView.categoryObjectArray = categories;
     _emoticonsColumnView.visibleSize = _visibleSize;
     _emoticonsColumnView.parentCategoryId = _currentParentCategoryId;
+    _emoticonsColumnView.delegate = self;
     [_emoticonsColumnView layout];
     [_categoriesScrollView addSubview:_emoticonsColumnView];
 }
@@ -132,6 +138,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectParentCategory:(int)category_id
 {
+    if(_isPresenting){
+        return;
+    }
     LOG(@"Parent category %d was selected.", category_id);
     _currentParentCategoryId = category_id;
     int number_of_child = [DataProvider childCategoryCountByParentCategoryId:category_id];
@@ -142,14 +151,17 @@
         [self placeChildCategoryTableView];
         [self presentToChildCategoryList];
     }
-    [_titleBarView showLeftButtonWithDuration:0.10f];
+    [_titleBarView showLeftButtonWithDuration:_backButtonDuration];
 }
 
 #pragma mark Children
 
 - (void)tableView:(UITableView *)tableView didSelectChildCategory:(int)category_id AtRow:(int)row
 {
-    LOG(@"CHild category %d was selected.", category_id);
+    if(_isPresenting){
+        return;
+    }
+    LOG(@"Child category %d was selected.", category_id);
     _currentChildCategoryId = category_id;
     _currentSelectedRow = row;
     if(_currentPage == UIEmoticonChooserCurrentPageIdChildCategory){
@@ -161,6 +173,13 @@
     [self presentToEmoticonsList];
 }
 
+#pragma mark emoticon
+
+- (void)didSelectEmoticon:(int)emoticon_id
+{
+    [self.delegate didSelectEmoticon:emoticon_id];
+}
+
 #pragma mark present
 
 - (void)pageWillBeBack
@@ -170,12 +189,12 @@
         {
             int number_of_child = [DataProvider childCategoryCountByParentCategoryId:_currentParentCategoryId];
             if(number_of_child == 0){
-                [_titleBarView hideLeftButtonWithDuration:0.10f];
+                [_titleBarView hideLeftButtonWithDuration:_backButtonDuration];
             }
         }
             break;
         case UIEmoticonChooserCurrentPageIdChildCategory:
-            [_titleBarView hideLeftButtonWithDuration:0.10f];
+            [_titleBarView hideLeftButtonWithDuration:_backButtonDuration];
             break;
         case UIEmoticonChooserCurrentPageIdParentCategory:
             break;
@@ -186,6 +205,9 @@
 
 - (BOOL)pagerShouldPresent
 {
+    if (_isPresenting) {
+        return NO;
+    }
     _categoriesScrollView.scrollEnabled = NO;
     [CategoriesScrollManager instance].limitDirection = NO;
     return YES;
@@ -194,6 +216,7 @@
 - (void)presentToParentCategoryList
 {
     if([self pagerShouldPresent]){
+        _isPresenting = YES;
         [_categoriesScrollView scrollRectToVisible:CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         _currentPage = UIEmoticonChooserCurrentPageIdParentCategory;
     }
@@ -202,6 +225,7 @@
 - (void)presentToChildCategoryList
 {
     if([self pagerShouldPresent]){
+        _isPresenting = YES;
         [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         _currentPage = UIEmoticonChooserCurrentPageIdChildCategory;
     }
@@ -212,9 +236,11 @@
     if([self pagerShouldPresent]){
         _emoticonsColumnView.currentPage = _currentSelectedRow + 1;
         if(_currentPage == UIEmoticonChooserCurrentPageIdChildCategory){
+            _isPresenting = YES;
             [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width * 2.0f, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         }
         if(_currentPage == UIEmoticonChooserCurrentPageIdParentCategory){
+            _isPresenting = YES;
             [_categoriesScrollView scrollRectToVisible:CGRectMake(_visibleSize.width, 0.0f, _visibleSize.width, _visibleSize.height) animated:YES];
         }
         _currentPage = UIEmoticonChooserCurrentPageIdEmoticonsList;
@@ -256,30 +282,42 @@
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
 {
     LOG(@"page was changed %d", page);
+    if (page < 1) {
+        return;
+    }
     _categoriesScrollView.contentOffset = CGPointMake(self.visibleSize.width * (page - 1), 0.0f);
     if(page == UIEmoticonChooserCurrentPageIdChildCategory){
         _categoriesScrollView.scrollEnabled = YES;
         [CategoriesScrollManager instance].limitDirection = YES;
     }
     if(page == UIEmoticonChooserCurrentPageIdParentCategory){
-        [_titleBarView hideLeftButtonWithDuration:0.10f];
+        [_titleBarView hideLeftButtonWithDuration:_backButtonDuration];
     }else{
-        [_titleBarView showLeftButtonWithDuration:0.10f];
+        [_titleBarView showLeftButtonWithDuration:_backButtonDuration];
     }
+    _isPresenting = NO;
 }
 
 #pragma mark back button
 
 - (void)backButtonDidTouch:(UITitleBarButton *)button
 {
+    if (_isPresenting) {
+        return;
+    }
     [self pageWillBeBack];
     [self presentToPreviousPage];
-
+    
 }
 
 - (void)dealloc
 {
-    _categoriesScrollView.delegate = nil;
+    if(_categoriesScrollView){
+        _categoriesScrollView.delegate = nil;
+    }
+    if(_emoticonsColumnView){
+        _emoticonsColumnView.delegate = nil;
+    }
 }
 
 - (void)toggleDammyBackgroundView:(BOOL)show

@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface UIEmoticonTableViewCell : UITableViewCell
+{
+    BOOL _highlighted;
+}
+
+
+@property (nonatomic, assign) BOOL isTopCell;
+@property (nonatomic, assign) BOOL isBottomCell;
 
 @end

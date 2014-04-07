@@ -24,5 +24,7 @@
 + (UIColor*)activeTextColor;
 
 + (UIColor*)cellNormalBackgroundColor;
++ (UIColor*)cellLightBorderColor;
++ (UIColor*)cellDarkBorderColor;
 
 @end

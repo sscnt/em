@@ -13,6 +13,9 @@
 #import "ParentCategoriesTableManager.h"
 #import "ChildCategoriesTableManager.h"
 
+@protocol UIEmoticonsChooserViewDelegate <NSObject>
+- (void)didSelectEmoticon:(int)emoticon_id;
+@end
 
 typedef NS_ENUM(NSInteger, UIEmoticonChooserCategoryTableId){
     UIEmoticonChooserCategoryTableIdParent = 1,
@@ -25,8 +28,10 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
     UIEmoticonChooserCurrentPageIdEmoticonsList
 };
 
-@interface UIEmoticonsChooserView : UIView <CategoriesScrollManagerDelegate, TableManagerDelegate>
+@interface UIEmoticonsChooserView : UIView <CategoriesScrollManagerDelegate, TableManagerDelegate, UIMultiColumnViewDelegate>
 {
+    CGFloat _backButtonDuration;
+    BOOL _isPresenting;
     UIEmoticonChooserCurrentPageId _currentPage;
     UIView* _dammyBackgroundView;
     UITitleBarView* _titleBarView;
@@ -42,6 +47,7 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 @property (nonatomic, strong) UITitleBarButton* backButton;
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, assign) CGSize visibleSize;
+@property (nonatomic, weak) id<UIEmoticonsChooserViewDelegate> delegate;
 
 - (void)toggleDammyBackgroundView:(BOOL)show;
 

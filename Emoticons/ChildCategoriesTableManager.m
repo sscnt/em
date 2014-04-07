@@ -61,6 +61,11 @@ static ChildCategoriesTableManager* sharedChildCategoriesDataSource = nil;
     if(cat){
         cell.textLabel.text = cat.name;
     }
+    if(indexPath.row == 0){
+        cell.isTopCell = YES;
+    }else if(indexPath.row + 1 == _numberOfRows){
+        cell.isBottomCell = YES;
+    }
     
     
     return cell;

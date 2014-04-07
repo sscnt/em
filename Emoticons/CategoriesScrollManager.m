@@ -105,7 +105,10 @@ static CategoriesScrollManager* sharedCategoriesScrollManager = nil;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
-    [self.delegate scrollView:scrollView didPageChange:(int)page + 1];
+    if(_currentPage != (int)page){
+        [self.delegate scrollView:scrollView didPageChange:(int)page + 1];
+        _currentPage = (int)page;
+    }
 }
 
 @end

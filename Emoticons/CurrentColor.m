@@ -83,4 +83,14 @@ static CurrentColor* sharedCurrentColor = nil;
     return [UIColor colorWithRed:250.0f/255.0f green:246.0f/255.0f blue:245.0f/255.0f alpha:1.0f];
 }
 
++ (UIColor*)cellLightBorderColor
+{
+    return [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+}
+
++ (UIColor*)cellDarkBorderColor
+{
+    return [UIColor colorWithRed:204.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
+}
+
 @end

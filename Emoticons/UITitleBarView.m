@@ -53,6 +53,8 @@
 - (void)addButtonToLeft:(UITitleBarButton *)button
 {
     [button setX:0.0f];
+    [button setY:-44.0f];
+    [button setHidden:YES];
     _leftButton = button;
     [self addSubview:button];
 }
@@ -60,6 +62,8 @@
 - (void)addButtonToRight:(UITitleBarButton *)button
 {
     [button setX:self.frame.size.width - button.frame.size.width];
+    [button setY:-44.0f];
+    [button setHidden:YES];
     _rightButton = button;
     [self addSubview:button];
 }
@@ -74,14 +78,21 @@
     if(_rightButton && _rightButton.hidden && !_rightButtonAnimationStarted){
         _rightButtonAnimationStarted = YES;
         [_rightButton setHidden:NO];
+        [_rightButton setAlpha:0.0f];
         __block UITitleBarView* _self = self;
-        [UIView animateWithDuration:duration
+        [UIView animateWithDuration:duration / 2.0f
                          animations:^{
-                             [_self.rightButton setY:0.0f];
-                             [_self.rightButton setAlpha:1.0f];
+                             [_self.rightButton setY:-22.0f];
                          }
                          completion:^(BOOL finished){
-                             _self.rightButtonAnimationStarted = NO;
+                             [UIView animateWithDuration:duration / 2.0f
+                                              animations:^{
+                                                  [_self.rightButton setY:0.0f];
+                                                  [_self.rightButton setAlpha:1.0f];
+                                              }
+                                              completion:^(BOOL finished){
+                                                  _self.rightButtonAnimationStarted = NO;
+                                              }];
                          }];
     }
 }
@@ -96,14 +107,21 @@
     if(_leftButton && _leftButton.hidden && !_leftButtonAnimationStarted){
         _leftButtonAnimationStarted = YES;
         [_leftButton setHidden:NO];
+        [_leftButton setAlpha:0.0f];
         __block UITitleBarView* _self = self;
-        [UIView animateWithDuration:duration
+        [UIView animateWithDuration:duration / 2.0f
                          animations:^{
-                             [_self.leftButton setY:0.0f];
-                             [_self.leftButton setAlpha:1.0f];
+                             [_self.leftButton setY:-22.0f];
                          }
                          completion:^(BOOL finished){
-                             _self.leftButtonAnimationStarted = NO;
+                             [UIView animateWithDuration:duration / 2.0f
+                                              animations:^{
+                                                  [_self.leftButton setY:0.0f];
+                                                  [_self.leftButton setAlpha:1.0f];
+                                              }
+                                              completion:^(BOOL finished){
+                                                  _self.leftButtonAnimationStarted = NO;
+                                              }];
                          }];
     }
 }
@@ -119,14 +137,20 @@
         _rightButtonAnimationStarted = YES;
         [_rightButton setY:0.0f];
         __block UITitleBarView* _self = self;
-        [UIView animateWithDuration:duration
+        [UIView animateWithDuration:duration / 2.0f
                          animations:^{
-                             [_self.rightButton setY:-44.0f];
+                             [_self.rightButton setY:-22.0f];
                              [_self.rightButton setAlpha:0.0f];
                          }
                          completion:^(BOOL finished){
-                             [_self.rightButton setHidden:YES];
-                             _self.rightButtonAnimationStarted = NO;
+                             [UIView animateWithDuration:duration / 2.0f
+                                              animations:^{
+                                                  [_self.rightButton setY:-44.0f];
+                                              }
+                                              completion:^(BOOL finished){
+                                                  [_self.rightButton setHidden:YES];
+                                                  _self.rightButtonAnimationStarted = NO;
+                                              }];
                          }];
     }
 }
@@ -144,12 +168,18 @@
         __block UITitleBarView* _self = self;
         [UIView animateWithDuration:duration
                          animations:^{
-                             [_self.leftButton setY:-44.0f];
+                             [_self.leftButton setY:-22.0f];
                              [_self.leftButton setAlpha:0.0f];
                          }
                          completion:^(BOOL finished){
-                             [_self.leftButton setHidden:YES];
-                             _self.leftButtonAnimationStarted = NO;
+                             [UIView animateWithDuration:duration / 2.0f
+                                              animations:^{
+                                                  [_self.leftButton setY:-44.0f];
+                                              }
+                                              completion:^(BOOL finished){
+                                                  [_self.leftButton setHidden:YES];
+                                                  _self.leftButtonAnimationStarted = NO;
+                                              }];
                          }];
     }
 }

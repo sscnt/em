@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIEmoticonsTableView : UITableView
-{
-    CGPoint _touchesPoint;
-    BOOL _emitted;
-}
 
 @property (nonatomic, assign) int category_id;
 @property (nonatomic, assign) int page;

@@ -11,6 +11,10 @@
 #import "EmoticonsTableManager.h"
 #import "UIMultiColumnTitleView.h"
 
+@protocol UIMultiColumnViewDelegate <NSObject>
+- (void)didSelectEmoticon:(int)emoticon_id;
+@end
+
 @interface UIMultiColumnView : UIView <UIScrollViewDelegate, TableManagerDelegate>
 {
     NSUInteger _numberOfPages;
@@ -25,6 +29,7 @@
 @property (nonatomic, strong) NSArray* categoryObjectArray;
 @property (nonatomic, assign) int currentPage;
 @property (nonatomic, assign) CGSize visibleSize;
+@property (nonatomic, weak) id<UIMultiColumnViewDelegate> delegate;
 
 - (void)layout;
 - (void)showTableAtPage:(int)page;
