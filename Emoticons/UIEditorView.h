@@ -28,6 +28,6 @@
 
 - (void)showKeyboardIfNeeded;
 
-- (void)keyboardWillShow:(NSNotification*)note;
+- (void)keyboardDidShow:(NSNotification*)note;
 
 @end

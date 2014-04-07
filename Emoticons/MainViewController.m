@@ -53,10 +53,10 @@
     [_scrollView addSubview:_chooserView];
     
     //// Editor
-    _editorView = [[UIEditorView alloc] initWithFrame:CGRectMake(10.0f + [UIScreen width], 30.0f, [UIScreen width] - 20.0f, [UIScreen height] - 30.0f)];
+    _editorView = [[UIEditorView alloc] initWithFrame:CGRectMake(10.0f + [UIScreen width], 30.0f, [UIScreen width] - 20.0f, [UIScreen height] - 50.0f)];
     if([UIDevice isIOS6]){
         [_editorView setY:10.0f];
-        [_editorView setHeight:[UIScreen height] - 10.0f];
+        [_editorView setHeight:[UIScreen height] - 30.0f];
     }
     _editorView.hidden = YES;
     _editorView.delegate = self;

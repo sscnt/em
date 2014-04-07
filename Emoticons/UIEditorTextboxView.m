@@ -43,6 +43,27 @@
     return self;
 }
 
+- (void)setCaretPoint:(CGPoint)caretPoint
+{
+    UITextPosition * position = [_textField closestPositionToPoint:caretPoint];
+    [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
+}
+
+- (void)insertText:(NSString *)text AtPoint:(CGPoint)point
+{
+    UITextPosition * position = [_textField closestPositionToPoint:point];
+    [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
+    NSRange range = _textField.selectedRange;
+    NSString * firstHalfString = [_textField.text substringToIndex:range.location];
+    NSString * secondHalfString = [_textField.text substringFromIndex: range.location];
+    _textField.scrollEnabled = NO;  // turn off scrolling or you'll get dizzy ... I promise
+    
+    _textField.text = [NSString stringWithFormat: @"%@%@%@", firstHalfString, text, secondHalfString];
+    range.location += [text length];
+    _textField.selectedRange = range;
+    _textField.scrollEnabled = YES;
+}
+
 - (void)setVisibleSize:(CGSize)visibleSize
 {
     _visibleSize = visibleSize;
@@ -57,6 +78,7 @@
 
 - (void)showKeyboard
 {
+    LOG(@"keyboard show");
     [_textField becomeFirstResponder];
 }
 

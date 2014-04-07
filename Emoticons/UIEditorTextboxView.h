@@ -31,9 +31,11 @@
 @property (nonatomic, weak) id<UIEditorTextboxViewDelegate> delegate;
 @property (nonatomic, strong) NSString* text;
 @property (nonatomic, assign) CGSize visibleSize;
+@property (nonatomic, assign) CGPoint caretPoint;
 
 - (void)adjustLayout;
 - (void)backButtonDidPress:(UITitleBarButton*)button;
 - (void)showKeyboard;
+- (void)insertText:(NSString*)text AtPoint:(CGPoint)point;
 
 @end

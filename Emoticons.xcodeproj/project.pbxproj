@@ -29,6 +29,7 @@
 		58F66CE118EE8AC3005FCC8C /* history.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE018EE8AC3005FCC8C /* history.sqlite */; };
 		58F66CE318EE8B0F005FCC8C /* favorites.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE218EE8B0F005FCC8C /* favorites.sqlite */; };
 		58F66CE518EE8C6A005FCC8C /* updates.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE418EE8C6A005FCC8C /* updates.sqlite */; };
+		58F8BABA18F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */; };
 		58FA8DE018EEB9FC0048A715 /* TableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8DDF18EEB9FC0048A715 /* TableManager.m */; };
 		58FA8DE418EEBF300048A715 /* ChildCategoriesTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8DE318EEBF300048A715 /* ChildCategoriesTableManager.m */; };
 		58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
@@ -116,6 +117,8 @@
 		58F66CE018EE8AC3005FCC8C /* history.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = history.sqlite; sourceTree = "<group>"; };
 		58F66CE218EE8B0F005FCC8C /* favorites.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = favorites.sqlite; sourceTree = "<group>"; };
 		58F66CE418EE8C6A005FCC8C /* updates.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = updates.sqlite; sourceTree = "<group>"; };
+		58F8BAB818F2ED2E000217D2 /* UIEditorDraggableEmoticonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorDraggableEmoticonView.h; sourceTree = "<group>"; };
+		58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorDraggableEmoticonView.m; sourceTree = "<group>"; };
 		58FA8DDE18EEB9FC0048A715 /* TableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableManager.h; sourceTree = "<group>"; };
 		58FA8DDF18EEB9FC0048A715 /* TableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableManager.m; sourceTree = "<group>"; };
 		58FA8DE218EEBF300048A715 /* ChildCategoriesTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildCategoriesTableManager.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				58F5DF8218F26FC2003CE7D9 /* UIEditorTextboxView.m */,
 				58F5DF8418F27180003CE7D9 /* UIEditorTextFieldView.h */,
 				58F5DF8518F27180003CE7D9 /* UIEditorTextFieldView.m */,
+				58F8BAB818F2ED2E000217D2 /* UIEditorDraggableEmoticonView.h */,
+				58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 				58FBA25918EDB9B600A68C26 /* UIDevice+extend.m in Sources */,
 				58F5DF8318F26FC2003CE7D9 /* UIEditorTextboxView.m in Sources */,
 				58078BDD18EF14D000AC301E /* EmoticonObject.m in Sources */,
+				58F8BABA18F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m in Sources */,
 				58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */,
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
 				58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */,

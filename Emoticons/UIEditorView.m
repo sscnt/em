@@ -19,7 +19,7 @@
         _textBoxView = [[UIEditorTextboxView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height - _keyboardHeight - 10.0f)];
         _textBoxView.delegate = self;
         [self addSubview:_textBoxView];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     }
     return self;
 }
@@ -44,18 +44,21 @@
         _textBoxView.text = placeholder;
     }else{
         _keyboardShouldShow = NO;
+        [_textBoxView insertText:placeholder AtPoint:CGPointMake(20.0f, 66.0f)];
     }
 }
 
 #pragma mark keyboard
 
-- (void)keyboardWillShow:(NSNotification *)note
+- (void)keyboardDidShow:(NSNotification *)note
 {
     NSDictionary* info = (NSDictionary*)[note userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     _keyboardHeight = kbSize.height;
     CGSize viewSize = CGSizeMake(self.frame.size.width, self.frame.size.height - _keyboardHeight - 10.0f);
     _textBoxView.visibleSize = viewSize;
+    
+    _textBoxView.caretPoint = CGPointMake(20.0f, _textBoxView.frame.size.height + 10.0f);
 }
 
 #pragma mark delegate
@@ -68,7 +71,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     _textBoxView.delegate = nil;
 }
 
