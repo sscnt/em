@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIEditorTextboxView.h"
+#import "UIEditorDraggableEmoticonView.h"
 
 @protocol UIEditorViewDelegate <NSObject>
 
@@ -25,9 +26,11 @@
 @property (nonatomic, assign) BOOL shadow;
 @property (nonatomic, weak) id<UIEditorViewDelegate> delegate;
 @property (nonatomic, strong) NSString* placeholder;
+@property (nonatomic, strong) UIEditorDraggableEmoticonView* draggableEmoticonView;
 
 - (void)showKeyboardIfNeeded;
-
 - (void)keyboardDidShow:(NSNotification*)note;
+- (void)showDraggableEmoticonViewWithText:(NSString*)text;
+- (void)didDraggableEmoticonViewDrag:(UIPanGestureRecognizer *)sender;
 
 @end

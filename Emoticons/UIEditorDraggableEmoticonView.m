@@ -14,9 +14,24 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.userInteractionEnabled = YES;
+        
+        CGFloat padding = 20.0f;
+        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, 0.0f, frame.size.width - padding * 2.0f, frame.size.height)];
+        _textLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:_textLabel];
     }
     return self;
+}
+
+- (NSString *)text
+{
+    return _textLabel.text;
+}
+
+- (void)setText:(NSString *)text
+{
+    _textLabel.text = text;
 }
 
 /*

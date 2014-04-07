@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIEditorDraggableEmoticonView : UILabel
+@interface UIEditorDraggableEmoticonView : UIView
+{
+    UILabel* _textLabel;
+}
+
+@property (nonatomic, strong) NSString* text;
 
 @end

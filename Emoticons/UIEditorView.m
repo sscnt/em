@@ -20,6 +20,17 @@
         _textBoxView.delegate = self;
         [self addSubview:_textBoxView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+        
+        //// Draggable
+        _draggableEmoticonView = [[UIEditorDraggableEmoticonView alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 84.0f, frame.size.width, 44.0f)];
+        [self addSubview:_draggableEmoticonView];
+        _draggableEmoticonView.hidden = YES;
+        [self bringSubviewToFront:_draggableEmoticonView];
+        
+        //// Gesture
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDraggableEmoticonViewDrag:)];
+        [_draggableEmoticonView addGestureRecognizer:panGestureRecognizer];
+
     }
     return self;
 }
@@ -43,6 +54,8 @@
         _keyboardShouldShow = YES;
         _textBoxView.text = placeholder;
     }else{
+        _draggableEmoticonView.hidden = NO;
+        _draggableEmoticonView.text = placeholder;
         _keyboardShouldShow = NO;
         [_textBoxView insertText:placeholder AtPoint:CGPointMake(20.0f, 66.0f)];
     }
@@ -69,19 +82,33 @@
     [self.delegate backButtonDidPress];
 }
 
+#pragma mark draggable
+
+- (void)didDraggableEmoticonViewDrag:(UIPanGestureRecognizer *)sender
+{
+    UIView *targetView = sender.view;
+    CGPoint p = [sender translationInView:targetView];
+    
+    CGPoint movedPoint = CGPointMake(targetView.center.x + p.x, targetView.center.y + p.y);
+    targetView.center = movedPoint;
+    
+    CGPoint fingerPoint = [sender locationInView:targetView];
+    fingerPoint = CGPointMake(movedPoint.x - targetView.frame.size.width / 2.0f + fingerPoint.x, movedPoint.y - targetView.frame.size.height / 2.0f + fingerPoint.y);
+    
+    //// convert to box local
+    CGFloat boxTop = _textBoxView.frame.origin.y + 44.0f;
+    CGFloat boxLeft = _textBoxView.frame.origin.x;
+    CGPoint boxLocal = CGPointMake(fingerPoint.x - boxLeft, fingerPoint.y - boxTop);
+    LOG_POINT(boxLocal);
+    
+    [sender setTranslation:CGPointZero inView:targetView];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     _textBoxView.delegate = nil;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
