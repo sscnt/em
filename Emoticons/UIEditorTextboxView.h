@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UITitleBarView.h"
 #import "UITitleBarButton.h"
-#import "UIEditorTextField.h"
+#import "UIEditorTextFieldView.h"
 
 @protocol UIEditorTextboxViewDelegate <NSObject>
 
@@ -22,15 +22,18 @@
     UITitleBarButton* _backButton;
     UITitleBarButton* _doneButton;
     UITitleBarView* _titleBarView;
-    UIEditorTextField* _textField;
+    UIEditorTextFieldView* _textField;
 }
 
 
 @property (nonatomic, assign) BOOL shadow;
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, weak) id<UIEditorTextboxViewDelegate> delegate;
+@property (nonatomic, strong) NSString* text;
+@property (nonatomic, assign) CGSize visibleSize;
 
+- (void)adjustLayout;
 - (void)backButtonDidPress:(UITitleBarButton*)button;
-- (void)setPlaceholder:(NSString*)text;
+- (void)showKeyboard;
 
 @end

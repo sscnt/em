@@ -14,9 +14,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _textBoxView = [[UIEditorTextboxView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 300.0f)];
+        _keyboardHeight = 216.0f;
+        _keyboardShouldShow = YES;
+        _textBoxView = [[UIEditorTextboxView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height - _keyboardHeight - 10.0f)];
         _textBoxView.delegate = self;
         [self addSubview:_textBoxView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     }
     return self;
 }
@@ -26,15 +29,38 @@
     _textBoxView.shadow = shadow;
 }
 
+- (void)showKeyboardIfNeeded
+{
+    if(_keyboardShouldShow){
+        [_textBoxView showKeyboard];
+    }
+}
+
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
-    [_textBoxView setPlaceholder:placeholder];
+    if([_textBoxView.text length] == 0){
+        _keyboardShouldShow = YES;
+        _textBoxView.text = placeholder;
+    }else{
+        _keyboardShouldShow = NO;
+    }
+}
+
+#pragma mark keyboard
+
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    NSDictionary* info = (NSDictionary*)[note userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    _keyboardHeight = kbSize.height;
+    CGSize viewSize = CGSizeMake(self.frame.size.width, self.frame.size.height - _keyboardHeight - 10.0f);
+    _textBoxView.visibleSize = viewSize;
 }
 
 #pragma mark delegate
 
-- (void)backButtonDidPress:(UITitleBarButton *)button
+- (void)backButtonDidPress
 {
     [self endEditing:YES];
     [self.delegate backButtonDidPress];
@@ -42,6 +68,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     _textBoxView.delegate = nil;
 }
 

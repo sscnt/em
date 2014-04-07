@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIEditorTextField : UITextField
+@interface UIEditorTextFieldView : UITextView
 
 @end

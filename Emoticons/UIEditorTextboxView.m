@@ -30,19 +30,42 @@
         
         //////// Back
         _backButton = [[UITitleBarButton alloc] initWithType:UITitleBarButtonTypeBack];
-        [_backButton addTarget:self.delegate action:@selector(backButtonDidPress:) forControlEvents:UIControlEventTouchUpInside];
+        [_backButton addTarget:self.delegate action:@selector(backButtonDidPress) forControlEvents:UIControlEventTouchUpInside];
         [_titleBarView addButtonToLeft:_backButton];
         [_titleBarView showLeftButton];
         
         //// Field
-        _textField = [[UIEditorTextField alloc] initWithFrame:CGRectMake(0.0f, [_titleBarView bottom], frame.size.width, 60.0f)];
+        _textField = [[UIEditorTextFieldView alloc] initWithFrame:CGRectMake(0.0f, [_titleBarView bottom], frame.size.width, frame.size.height - 88.0f)];
+        _textField.text = @"";
         [self.view addSubview:_textField];
 
     }
     return self;
 }
 
-- (void)setPlaceholder:(NSString *)text
+- (void)setVisibleSize:(CGSize)visibleSize
+{
+    _visibleSize = visibleSize;
+    [self adjustLayout];
+}
+
+- (void)adjustLayout
+{
+    [self setHeight:_visibleSize.height];
+    [_textField setHeight:_visibleSize.height - 88.0f];
+}
+
+- (void)showKeyboard
+{
+    [_textField becomeFirstResponder];
+}
+
+- (NSString *)text
+{
+    return _textField.text;
+}
+
+- (void)setText:(NSString *)text
 {
     _textField.text = text;
 }

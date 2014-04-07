@@ -6,15 +6,16 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "UIEditorTextField.h"
+#import "UIEditorTextFieldView.h"
 
-@implementation UIEditorTextField
+@implementation UIEditorTextFieldView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.editable = YES;
+        self.font = [UIFont systemFontOfSize:16.0f];
     }
     return self;
 }

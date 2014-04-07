@@ -18,10 +18,16 @@
 @interface UIEditorView : UIView <UIEditorTextboxViewDelegate>
 {
     UIEditorTextboxView* _textBoxView;
+    BOOL _keyboardShouldShow;
+    CGFloat _keyboardHeight;
 }
 
 @property (nonatomic, assign) BOOL shadow;
 @property (nonatomic, weak) id<UIEditorViewDelegate> delegate;
 @property (nonatomic, strong) NSString* placeholder;
+
+- (void)showKeyboardIfNeeded;
+
+- (void)keyboardWillShow:(NSNotification*)note;
 
 @end

@@ -97,7 +97,7 @@
     if(p.x < scrollView.frame.size.width * 2.0){
         CGFloat ratio = p.x / scrollView.frame.size.width;
         
-        CGFloat angle = -15.0f * M_PI / 180.0f * ratio;
+        CGFloat angle = -8.0f * M_PI / 180.0f * ratio;
         CGFloat x = _chooserView.frame.size.height * 1.50f * sinf(angle) * ratio;
         CGFloat y = _chooserView.frame.size.height * 1.50f * cosf(angle);
         y = _chooserView.frame.size.height * 1.50f - y;
@@ -106,7 +106,7 @@
         CGAffineTransform concat = CGAffineTransformConcat(CGAffineTransformMakeRotation(angle), CGAffineTransformMakeTranslation(x, y));
         _chooserView.transform = concat;
         
-        angle = 15.0f * M_PI / 180.0f * (1.0 - ratio);
+        angle = 8.0f * M_PI / 180.0f * (1.0 - ratio);
         x = _chooserView.frame.size.height * 1.50f * sinf(angle) * (1.0 - ratio);
         y = _chooserView.frame.size.height * 1.50f * cosf(angle);
         y = _chooserView.frame.size.height * 1.50f - y;
@@ -125,6 +125,9 @@
 - (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
 {
     _currentPage = page;
+    if(page == MainViewPageIdEditor){
+        [_editorView showKeyboardIfNeeded];
+    }
 }
 
 
