@@ -25,25 +25,25 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    LOG_SIZE([UIScreen screenSize]);
-    
     [super viewDidLoad];
+    
+    _currentPage = MainViewPageIdChooser;
+    [MainViewScrollManager instance].delegate = self;
     
     //// Scroll View
     _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen screenRect]];
-    _scrollView.delegate = self;
+    _scrollView.delegate = [MainViewScrollManager instance];
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
-    _scrollView.contentSize = CGSizeMake([UIScreen width] * 4.0f, _scrollView.frame.size.height);
+    _scrollView.contentSize = CGSizeMake([UIScreen width] * 3.0f, _scrollView.frame.size.height);
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = NO;
-    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width, 0.0f, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:NO];
     [self.view addSubview:_scrollView];
     
     
     //// Chooser
-    _chooserView = [[UIEmoticonsChooserView alloc] initWithFrame:CGRectMake(10.0f + [UIScreen width], 30.0f, [UIScreen width] - 20.0f, [UIScreen height])];
+    _chooserView = [[UIEmoticonsChooserView alloc] initWithFrame:CGRectMake(10.0f, 30.0f, [UIScreen width] - 20.0f, [UIScreen height])];
     _chooserView.visibleSize = CGSizeMake([UIScreen width] - 20.0f, [UIScreen height] - 30.0f);
     if([UIDevice isIOS6]){
         [_chooserView setY:10.0f];
@@ -66,6 +66,37 @@
     [self presentToEditorView];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    _chooserView.shadow = NO;
+    CGPoint p = scrollView.contentOffset;
+    if(p.x < scrollView.frame.size.width * 2.0){
+        CGFloat ratio = p.x / scrollView.frame.size.width;
+        
+        CGFloat angle = -15.0f * M_PI / 180.0f * ratio;
+        CGFloat x = _chooserView.frame.size.height * 1.50f * sinf(angle) * ratio;
+        CGFloat y = _chooserView.frame.size.height * 1.50f * cosf(angle);
+        y = _chooserView.frame.size.height * 1.50f - y;
+        y *= ratio;
+        CGFloat scale = 1.0;
+        
+        CGAffineTransform concat = CGAffineTransformConcat(CGAffineTransformMakeRotation(angle), CGAffineTransformMakeScale(scale, scale));
+        concat = CGAffineTransformConcat(concat, CGAffineTransformMakeTranslation(x, y));
+        _chooserView.transform = concat;
+    }
+}
+
+- (void)scrollViewEndScroll:(UIScrollView *)scrollView
+{
+    _chooserView.shadow = YES;
+}
+
+- (void)scrollView:(UIScrollView *)scrollView didPageChange:(int)page
+{
+    
+}
+
+
 #pragma mark presenting
 
 - (void)presentToSettingsView
@@ -75,10 +106,8 @@
 
 - (void)presentToEditorView
 {
-    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width * 2.0f, 0.0f, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
     _scrollView.scrollEnabled = YES;
-    CGSize s = _scrollView.contentSize;
-    LOG_SIZE(s);
+    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width, 0.0f, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,6 +121,7 @@
 {
     _scrollView.delegate = nil;
     _chooserView.delegate = nil;
+    [MainViewScrollManager instance].delegate = nil;
 }
 
 @end

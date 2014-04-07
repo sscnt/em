@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, UIEmoticonChooserCurrentPageId){
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, assign) CGSize visibleSize;
 @property (nonatomic, weak) id<UIEmoticonsChooserViewDelegate> delegate;
+@property (nonatomic, assign) BOOL shadow;
 
 - (void)toggleDammyBackgroundView:(BOOL)show;
 

@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "UIBackgroundView.h"
 #import "UIEmoticonsChooserView.h"
+#import "MainViewScrollManager.h"
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate, UIEmoticonsChooserViewDelegate>
+typedef NS_ENUM(NSInteger, MainViewPageId){
+    MainViewPageIdChooser = 1,
+    MainViewPageIdEditor,
+};
+
+
+@interface MainViewController : UIViewController <UIScrollViewDelegate, UIEmoticonsChooserViewDelegate, MainViewScrollManagerDelegate>
 {
+    MainViewPageId _currentPage;
+    MainViewPageId _presentingToPage;
     UIScrollView* _scrollView;
     UIEmoticonsChooserView* _chooserView;
 }

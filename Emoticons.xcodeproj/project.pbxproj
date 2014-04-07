@@ -20,6 +20,7 @@
 		58F2DB7018ED7EB40018E582 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */; };
 		58F2ED4D18EEAE3A00FB6A2D /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */; };
 		58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2ED5018EEB3EF00FB6A2D /* ParentCategoriesTableManager.m */; };
+		58F5DF7C18F26B34003CE7D9 /* MainViewScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5DF7B18F26B34003CE7D9 /* MainViewScrollManager.m */; };
 		58F66CDD18EE8884005FCC8C /* categories.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDC18EE8884005FCC8C /* categories.sqlite */; };
 		58F66CDF18EE89EE005FCC8C /* emoticons.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */; };
 		58F66CE118EE8AC3005FCC8C /* history.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE018EE8AC3005FCC8C /* history.sqlite */; };
@@ -99,6 +100,8 @@
 		58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
 		58F2ED4F18EEB3EF00FB6A2D /* ParentCategoriesTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentCategoriesTableManager.h; sourceTree = "<group>"; };
 		58F2ED5018EEB3EF00FB6A2D /* ParentCategoriesTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentCategoriesTableManager.m; sourceTree = "<group>"; };
+		58F5DF7A18F26B34003CE7D9 /* MainViewScrollManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewScrollManager.h; sourceTree = "<group>"; };
+		58F5DF7B18F26B34003CE7D9 /* MainViewScrollManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewScrollManager.m; sourceTree = "<group>"; };
 		58F66CDC18EE8884005FCC8C /* categories.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.sqlite; sourceTree = "<group>"; };
 		58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = emoticons.sqlite; sourceTree = "<group>"; };
 		58F66CE018EE8AC3005FCC8C /* history.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = history.sqlite; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 			children = (
 				58078BCD18EEDF0B00AC301E /* CategoriesScrollManager.h */,
 				58078BCE18EEDF0B00AC301E /* CategoriesScrollManager.m */,
+				58F5DF7A18F26B34003CE7D9 /* MainViewScrollManager.h */,
+				58F5DF7B18F26B34003CE7D9 /* MainViewScrollManager.m */,
 			);
 			name = ScrollManager;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 				58FC0EAE18EDAA1C0079637F /* FMDatabaseAdditions.m in Sources */,
 				58078BD318EEF08600AC301E /* UICategoryTableViewCell.m in Sources */,
 				58FBA26B18EDF47C00A68C26 /* RootViewController.m in Sources */,
+				58F5DF7C18F26B34003CE7D9 /* MainViewScrollManager.m in Sources */,
 				58FC0E9918EDA8110079637F /* CurrentColor.m in Sources */,
 				58FC0EB518EDAA4F0079637F /* UITitleBarView.m in Sources */,
 				580F057118F19A1800A5FB56 /* UITitleBarButton.m in Sources */,

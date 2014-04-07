@@ -32,10 +32,7 @@
         
         self.backgroundColor = [UIColor clearColor];
         self.layer.masksToBounds = NO;
-        self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        self.layer.shadowOpacity = 0.7f;
-        self.layer.shadowColor = [CurrentColor dropshadowColor].CGColor;
-        self.layer.shadowRadius = 4.0f;
+        self.shadow = YES;
         
         //// Title
         _titleBarView = [[UITitleBarView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 44.0f)];
@@ -75,6 +72,21 @@
         [ChildCategoriesTableManager instance].delegate = self;
     }
     return self;
+}
+
+- (void)setShadow:(BOOL)shadow
+{
+    if(shadow){
+        self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        self.layer.shadowOpacity = 0.7f;
+        self.layer.shadowColor = [CurrentColor dropshadowColor].CGColor;
+        self.layer.shadowRadius = 4.0f;
+    }else{
+        self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        self.layer.shadowOpacity = 0.0f;
+        self.layer.shadowColor = [UIColor clearColor].CGColor;
+        self.layer.shadowRadius = 0.0f;
+    }
 }
 
 - (void)setVisibleSize:(CGSize)visibleSize
