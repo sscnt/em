@@ -46,7 +46,6 @@
         _previewTextField.hidden = NO;
         _previewTextField.userInteractionEnabled = NO;
         _previewTextField.hidden = YES;
-        _previewTextField.backgroundColor = [UIColor blueColor];
         [self.view addSubview:_previewTextField];
 
     }
@@ -64,8 +63,28 @@
     _previewTextField.hidden = !show;
 }
 
-- (void)insertText:(NSString *)text AtPoint:(CGPoint)point
+- (BOOL)isFingerOverTextField:(CGPoint)point
 {
+    if (point.y > _textField.frame.size.height) {
+        return NO;
+    }
+    if (point.y < _textField.frame.origin.y) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)moveCaretToPoint:(CGPoint)point
+{
+    UITextPosition * position = [_textField closestPositionToPoint:point];
+    [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
+}
+
+- (BOOL)insertText:(NSString *)text AtPoint:(CGPoint)point
+{
+    if (![self isFingerOverTextField:point]) {
+        return NO;
+    }
     UITextPosition * position = [_textField closestPositionToPoint:point];
     [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
     NSRange range = _textField.selectedRange;
@@ -77,6 +96,7 @@
     range.location += [text length];
     _textField.selectedRange = range;
     _textField.scrollEnabled = YES;
+    return YES;
 }
 
 - (NSMutableAttributedString *)textByInserteAtPoint:(CGPoint)point WithText:(NSString *)text

@@ -38,10 +38,12 @@
 - (void)adjustLayout;
 - (void)backButtonDidPress:(UITitleBarButton*)button;
 - (void)showKeyboard;
+- (void)moveCaretToPoint:(CGPoint)point;
 - (void)togglePreview:(BOOL)show;
-- (void)insertText:(NSString*)text AtPoint:(CGPoint)point;
+- (BOOL)insertText:(NSString*)text AtPoint:(CGPoint)point;
 - (NSMutableAttributedString*)textByInserteAtPoint:(CGPoint)point WithText:(NSString*)text;
 - (void)previewTextWithInsertingText:(NSString*)text InsertAt:(CGPoint)point;
 - (void)previewTextWithInsertingText:(NSString *)text;
+- (BOOL)isFingerOverTextField:(CGPoint)point;
 
 @end

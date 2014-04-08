@@ -22,7 +22,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         
         //// Draggable
-        _draggableEmoticonView = [[UIEditorDraggableEmoticonView alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 84.0f, frame.size.width, 44.0f)];
+        _draggableEditorViewDefaultPosition = CGPointMake(_textBoxView.frame.origin.x, [_textBoxView bottom] +  (frame.size.height - _textBoxView.frame.size.height) / 2.0f);
+        _draggableEmoticonView = [[UIEditorDraggableEmoticonView alloc] initWithFrame:CGRectMake(_draggableEditorViewDefaultPosition.x, _draggableEditorViewDefaultPosition.y, frame.size.width, 44.0f)];
         [self addSubview:_draggableEmoticonView];
         _draggableEmoticonView.hidden = YES;
         [self bringSubviewToFront:_draggableEmoticonView];
@@ -30,7 +31,8 @@
         //// Gesture
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDraggableEmoticonViewDrag:)];
         [_draggableEmoticonView addGestureRecognizer:panGestureRecognizer];
-
+        
+        _caretPoint = CGPointMake(0.0f, 0.0f);
     }
     return self;
 }
@@ -65,6 +67,22 @@
     _draggableEmoticonView.text = text;
 }
 
+- (void)resetPositionOfDraggableEmoticonView
+{
+    _draggableEmoticonView.userInteractionEnabled = NO;
+    __block UIEditorView* _self = self;
+    
+    [UIView animateWithDuration:0.20f
+                     animations:^{
+                         _self.draggableEmoticonView.frame = CGRectMake(_self.draggableEditorViewDefaultPosition.x, _self.draggableEditorViewDefaultPosition.y, _self.draggableEmoticonView.frame.size.width, _draggableEmoticonView.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                         _self.draggableEmoticonView.userInteractionEnabled = YES;
+                     }];
+
+    
+}
+
 #pragma mark keyboard
 
 - (void)keyboardDidShow:(NSNotification *)note
@@ -74,8 +92,6 @@
     _keyboardHeight = kbSize.height;
     CGSize viewSize = CGSizeMake(self.frame.size.width, self.frame.size.height - _keyboardHeight - 10.0f);
     _textBoxView.visibleSize = viewSize;
-    
-    _textBoxView.caretPoint = CGPointMake(20.0f, _textBoxView.frame.size.height + 10.0f);
 }
 
 #pragma mark delegate
@@ -105,27 +121,39 @@
     CGPoint boxLocal = CGPointMake(fingerPoint.x - boxLeft, fingerPoint.y - boxTop);
     
     //// shift
-    boxLocal = CGPointMake(boxLocal.x, boxLocal.y - [CurrentSettings textSizeForEditor] * 3.0f);
+    CGPoint shiftedFingerPoint = CGPointMake(boxLocal.x, boxLocal.y - [CurrentSettings textSizeForEditor] * 3.0f);
     
-    _textBoxView.fingerPoint = boxLocal;
-    [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
+    _textBoxView.fingerPoint = shiftedFingerPoint;
+    
+    if([_textBoxView isFingerOverTextField:boxLocal]){
+        [_textBoxView togglePreview:YES];
+        [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
+    }else{
+        [_textBoxView togglePreview:NO];
+    }
     
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
         {
-            [_textBoxView togglePreview:YES];
         }
             break;
         case UIGestureRecognizerStateEnded:
         {
             [_textBoxView togglePreview:NO];
-            [_textBoxView insertText:_draggableEmoticonView.text AtPoint:boxLocal];
+            if([_textBoxView isFingerOverTextField:boxLocal]){
+                if([_textBoxView insertText:_draggableEmoticonView.text AtPoint:shiftedFingerPoint]){
+                    [_textBoxView showKeyboard];
+                    _caretPoint = shiftedFingerPoint;
+                }
+            }
+            [self resetPositionOfDraggableEmoticonView];
         }
             break;
         case UIGestureRecognizerStateFailed:
         case UIGestureRecognizerStateCancelled:
         {
             [_textBoxView togglePreview:NO];
+            [self resetPositionOfDraggableEmoticonView];
         }
             break;
         default:
