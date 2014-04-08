@@ -46,6 +46,7 @@
         _previewTextField.hidden = NO;
         _previewTextField.userInteractionEnabled = NO;
         _previewTextField.hidden = YES;
+        _previewTextField.backgroundColor = [UIColor blueColor];
         [self.view addSubview:_previewTextField];
 
     }
@@ -80,6 +81,14 @@
 
 - (NSMutableAttributedString *)textByInserteAtPoint:(CGPoint)point WithText:(NSString *)text
 {
+    //// fix
+    if (_textField.contentOffset.y == 0.0) {
+        if (point.y <= [CurrentSettings textSizeForEditor] / 2.0f) {
+            LOG(@"top of the field");
+            point = CGPointMake(point.x, [CurrentSettings textSizeForEditor] / 2.0f);
+        }
+    }
+    
     UITextPosition * position = [_textField closestPositionToPoint:point];
     [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
     NSRange range = _textField.selectedRange;
@@ -87,13 +96,13 @@
     NSString * secondHalfString = [_textField.text substringFromIndex: range.location];
     
     
-    NSDictionary *stringAttributes1 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSDictionary *stringAttributes1 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [CurrentSettings fontForEditor] };
     NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:firstHalfString attributes:stringAttributes1];
     
-    NSDictionary *stringAttributes2 = @{ NSForegroundColorAttributeName : [CurrentColor activeTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSDictionary *stringAttributes2 = @{ NSForegroundColorAttributeName : [CurrentColor activeTextColor], NSFontAttributeName : [CurrentSettings fontForEditor] };
     NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:text attributes:stringAttributes2];
     
-    NSDictionary *stringAttributes3 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSDictionary *stringAttributes3 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [CurrentSettings fontForEditor] };
     NSAttributedString *string3 = [[NSAttributedString alloc] initWithString:secondHalfString attributes:stringAttributes3];
     
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
@@ -105,6 +114,9 @@
 
 - (void)previewTextWithInsertingText:(NSString *)text InsertAt:(CGPoint)point
 {
+    if (point.y > [_textField bottom]) {
+        return;
+    }
     _previewTextField.attributedText = [self textByInserteAtPoint:point WithText:text];
 }
 
@@ -124,6 +136,7 @@
 {
     [self setHeight:_visibleSize.height];
     [_textField setHeight:_visibleSize.height - 88.0f];
+    [_previewTextField setHeight:_visibleSize.height - 88.0f];
 }
 
 - (void)showKeyboard

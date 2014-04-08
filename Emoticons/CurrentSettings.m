@@ -42,4 +42,9 @@ static CurrentSettings* sharedCurrentSettings = nil;
     return 16.0f;
 }
 
++ (UIFont*)fontForEditor
+{
+    return [UIFont systemFontOfSize:[CurrentSettings textSizeForEditor]];
+}
+
 @end

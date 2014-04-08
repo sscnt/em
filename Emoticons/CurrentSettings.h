@@ -11,5 +11,6 @@
 @interface CurrentSettings : NSObject
 
 + (CGFloat)textSizeForEditor;
++ (UIFont*)fontForEditor;
 
 @end

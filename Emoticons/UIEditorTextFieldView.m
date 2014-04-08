@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.editable = YES;
-        self.font = [UIFont systemFontOfSize:16.0f];
+        self.font = [CurrentSettings fontForEditor];
     }
     return self;
 }

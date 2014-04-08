@@ -43,6 +43,7 @@
 #import "UIScrollView+extend.h"
 
 #import "CurrentColor.h"
+#import "CurrentSettings.h"
 #import "DataProvider.h"
 #import "CategoriesScrollManager.h"
 

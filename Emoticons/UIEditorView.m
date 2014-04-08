@@ -90,22 +90,6 @@
 
 - (void)didDraggableEmoticonViewDrag:(UIPanGestureRecognizer *)sender
 {
-    switch (sender.state) {
-        case UIGestureRecognizerStateBegan:
-        {
-            [_textBoxView togglePreview:YES];
-        }
-            break;
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateFailed:
-        case UIGestureRecognizerStateCancelled:
-        {
-            [_textBoxView togglePreview:NO];
-        }
-            break;
-        default:
-            break;
-    }
     UIView *targetView = sender.view;
     CGPoint p = [sender translationInView:targetView];
     
@@ -119,8 +103,35 @@
     CGFloat boxTop = _textBoxView.frame.origin.y + 44.0f;
     CGFloat boxLeft = _textBoxView.frame.origin.x;
     CGPoint boxLocal = CGPointMake(fingerPoint.x - boxLeft, fingerPoint.y - boxTop);
+    
+    //// shift
+    boxLocal = CGPointMake(boxLocal.x, boxLocal.y - [CurrentSettings textSizeForEditor] * 3.0f);
+    
     _textBoxView.fingerPoint = boxLocal;
     [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
+    
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            [_textBoxView togglePreview:YES];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        {
+            [_textBoxView togglePreview:NO];
+            [_textBoxView insertText:_draggableEmoticonView.text AtPoint:boxLocal];
+        }
+            break;
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateCancelled:
+        {
+            [_textBoxView togglePreview:NO];
+        }
+            break;
+        default:
+            break;
+    }
+    
     
     [sender setTranslation:CGPointZero inView:targetView];
 }

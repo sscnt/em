@@ -26,7 +26,6 @@
     UIEditorTextFieldView* _previewTextField;
 }
 
-
 @property (nonatomic, assign) BOOL shadow;
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, weak) id<UIEditorTextboxViewDelegate> delegate;
@@ -34,6 +33,7 @@
 @property (nonatomic, assign) CGSize visibleSize;
 @property (nonatomic, assign) CGPoint caretPoint;
 @property (nonatomic, assign) CGPoint fingerPoint;
+
 
 - (void)adjustLayout;
 - (void)backButtonDidPress:(UITitleBarButton*)button;
