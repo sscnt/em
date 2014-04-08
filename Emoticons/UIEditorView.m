@@ -121,9 +121,10 @@
     CGPoint boxLocal = CGPointMake(fingerPoint.x - boxLeft, fingerPoint.y - boxTop);
     
     //// shift
-    CGPoint shiftedFingerPoint = CGPointMake(boxLocal.x, boxLocal.y - [CurrentSettings textSizeForEditor] * 3.0f);
+    CGPoint shiftedFingerPoint = CGPointMake(boxLocal.x, boxLocal.y - [CurrentSettings textSizeForEditor] * 5.0f);
     
     _textBoxView.fingerPoint = shiftedFingerPoint;
+    
     
     if([_textBoxView isFingerOverTextField:boxLocal]){
         [_textBoxView togglePreview:YES];

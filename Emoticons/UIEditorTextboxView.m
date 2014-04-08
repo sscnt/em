@@ -65,10 +65,10 @@
 
 - (BOOL)isFingerOverTextField:(CGPoint)point
 {
-    if (point.y > _textField.frame.size.height) {
+    if (point.y > _textField.bounds.size.height) {
         return NO;
     }
-    if (point.y < _textField.frame.origin.y) {
+    if (point.y < _textField.bounds.origin.y) {
         return NO;
     }
     return YES;
@@ -82,9 +82,6 @@
 
 - (BOOL)insertText:(NSString *)text AtPoint:(CGPoint)point
 {
-    if (![self isFingerOverTextField:point]) {
-        return NO;
-    }
     UITextPosition * position = [_textField closestPositionToPoint:point];
     [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
     NSRange range = _textField.selectedRange;
