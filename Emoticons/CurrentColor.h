@@ -22,6 +22,7 @@
 + (UIColor*)titleBarBackgroundColor;
 
 + (UIColor*)activeTextColor;
++ (UIColor*)normalTextColor;
 
 + (UIColor*)cellNormalBackgroundColor;
 + (UIColor*)cellLightBorderColor;

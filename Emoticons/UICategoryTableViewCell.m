@@ -59,7 +59,7 @@
 - (void)drawRect:(CGRect)rect
 {
     //// Color Declarations
-    UIColor* arrowColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.50f];
+    UIColor* arrowColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.70f];
     
     if(_highlighted){
         //// Rectangle Drawing

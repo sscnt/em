@@ -54,11 +54,15 @@
         _keyboardShouldShow = YES;
         _textBoxView.text = placeholder;
     }else{
-        _draggableEmoticonView.hidden = NO;
-        _draggableEmoticonView.text = placeholder;
-        _keyboardShouldShow = NO;
-        [_textBoxView insertText:placeholder AtPoint:CGPointMake(20.0f, 66.0f)];
+        [self showDraggableEmoticonViewWithText:placeholder];
     }
+}
+
+- (void)showDraggableEmoticonViewWithText:(NSString *)text
+{
+    _keyboardShouldShow = NO;
+    _draggableEmoticonView.hidden = NO;
+    _draggableEmoticonView.text = text;
 }
 
 #pragma mark keyboard
@@ -86,6 +90,22 @@
 
 - (void)didDraggableEmoticonViewDrag:(UIPanGestureRecognizer *)sender
 {
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            [_textBoxView togglePreview:YES];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateCancelled:
+        {
+            [_textBoxView togglePreview:NO];
+        }
+            break;
+        default:
+            break;
+    }
     UIView *targetView = sender.view;
     CGPoint p = [sender translationInView:targetView];
     
@@ -99,7 +119,8 @@
     CGFloat boxTop = _textBoxView.frame.origin.y + 44.0f;
     CGFloat boxLeft = _textBoxView.frame.origin.x;
     CGPoint boxLocal = CGPointMake(fingerPoint.x - boxLeft, fingerPoint.y - boxTop);
-    LOG_POINT(boxLocal);
+    _textBoxView.fingerPoint = boxLocal;
+    [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
     
     [sender setTranslation:CGPointZero inView:targetView];
 }

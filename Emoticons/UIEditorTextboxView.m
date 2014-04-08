@@ -38,6 +38,15 @@
         _textField = [[UIEditorTextFieldView alloc] initWithFrame:CGRectMake(0.0f, [_titleBarView bottom], frame.size.width, frame.size.height - 88.0f)];
         _textField.text = @"";
         [self.view addSubview:_textField];
+        
+        //// Preview
+        _previewTextField = [[UIEditorTextFieldView alloc] initWithFrame:_textField.frame];
+        _previewTextField.text = @"";
+        _previewTextField.editable = NO;
+        _previewTextField.hidden = NO;
+        _previewTextField.userInteractionEnabled = NO;
+        _previewTextField.hidden = YES;
+        [self.view addSubview:_previewTextField];
 
     }
     return self;
@@ -47,6 +56,11 @@
 {
     UITextPosition * position = [_textField closestPositionToPoint:caretPoint];
     [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
+}
+
+- (void)togglePreview:(BOOL)show
+{
+    _previewTextField.hidden = !show;
 }
 
 - (void)insertText:(NSString *)text AtPoint:(CGPoint)point
@@ -62,6 +76,42 @@
     range.location += [text length];
     _textField.selectedRange = range;
     _textField.scrollEnabled = YES;
+}
+
+- (NSMutableAttributedString *)textByInserteAtPoint:(CGPoint)point WithText:(NSString *)text
+{
+    UITextPosition * position = [_textField closestPositionToPoint:point];
+    [_textField setSelectedTextRange:[_textField textRangeFromPosition:position toPosition:position]];
+    NSRange range = _textField.selectedRange;
+    NSString * firstHalfString = [_textField.text substringToIndex:range.location];
+    NSString * secondHalfString = [_textField.text substringFromIndex: range.location];
+    
+    
+    NSDictionary *stringAttributes1 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSAttributedString *string1 = [[NSAttributedString alloc] initWithString:firstHalfString attributes:stringAttributes1];
+    
+    NSDictionary *stringAttributes2 = @{ NSForegroundColorAttributeName : [CurrentColor activeTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSAttributedString *string2 = [[NSAttributedString alloc] initWithString:text attributes:stringAttributes2];
+    
+    NSDictionary *stringAttributes3 = @{ NSForegroundColorAttributeName : [CurrentColor normalTextColor], NSFontAttributeName : [UIFont systemFontOfSize:16.0f] };
+    NSAttributedString *string3 = [[NSAttributedString alloc] initWithString:secondHalfString attributes:stringAttributes3];
+    
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
+    [mutableAttributedString appendAttributedString:string1];
+    [mutableAttributedString appendAttributedString:string2];
+    [mutableAttributedString appendAttributedString:string3];
+    return mutableAttributedString;
+}
+
+- (void)previewTextWithInsertingText:(NSString *)text InsertAt:(CGPoint)point
+{
+    _previewTextField.attributedText = [self textByInserteAtPoint:point WithText:text];
+}
+
+- (void)previewTextWithInsertingText:(NSString *)text
+{
+    [self previewTextWithInsertingText:text InsertAt:_fingerPoint];
+    
 }
 
 - (void)setVisibleSize:(CGSize)visibleSize
@@ -90,6 +140,13 @@
 - (void)setText:(NSString *)text
 {
     _textField.text = text;
+}
+
+- (void)setFingerPoint:(CGPoint)fingerPoint
+{
+    //// convert to field local
+    CGPoint fieldLocal = CGPointMake(_textField.contentOffset.x + fingerPoint.x, _textField.contentOffset.y + fingerPoint.y);
+    _fingerPoint = fieldLocal;
 }
 
 - (void)setShadow:(BOOL)shadow

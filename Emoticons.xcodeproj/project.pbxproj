@@ -24,6 +24,7 @@
 		58F5DF8018F26FAC003CE7D9 /* UIEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5DF7F18F26FAC003CE7D9 /* UIEditorView.m */; };
 		58F5DF8318F26FC2003CE7D9 /* UIEditorTextboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5DF8218F26FC2003CE7D9 /* UIEditorTextboxView.m */; };
 		58F5DF8618F27180003CE7D9 /* UIEditorTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5DF8518F27180003CE7D9 /* UIEditorTextFieldView.m */; };
+		58F62BC318F426FA00AAA5D6 /* CurrentSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F62BC218F426FA00AAA5D6 /* CurrentSettings.m */; };
 		58F66CDD18EE8884005FCC8C /* categories.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDC18EE8884005FCC8C /* categories.sqlite */; };
 		58F66CDF18EE89EE005FCC8C /* emoticons.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */; };
 		58F66CE118EE8AC3005FCC8C /* history.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE018EE8AC3005FCC8C /* history.sqlite */; };
@@ -112,6 +113,8 @@
 		58F5DF8218F26FC2003CE7D9 /* UIEditorTextboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorTextboxView.m; sourceTree = "<group>"; };
 		58F5DF8418F27180003CE7D9 /* UIEditorTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorTextFieldView.h; sourceTree = "<group>"; };
 		58F5DF8518F27180003CE7D9 /* UIEditorTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorTextFieldView.m; sourceTree = "<group>"; };
+		58F62BC118F426FA00AAA5D6 /* CurrentSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSettings.h; sourceTree = "<group>"; };
+		58F62BC218F426FA00AAA5D6 /* CurrentSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSettings.m; sourceTree = "<group>"; };
 		58F66CDC18EE8884005FCC8C /* categories.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.sqlite; sourceTree = "<group>"; };
 		58F66CDE18EE89EE005FCC8C /* emoticons.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = emoticons.sqlite; sourceTree = "<group>"; };
 		58F66CE018EE8AC3005FCC8C /* history.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = history.sqlite; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 				58FC0E9818EDA8110079637F /* CurrentColor.m */,
 				58F2ED4B18EEAE3A00FB6A2D /* DataProvider.h */,
 				58F2ED4C18EEAE3A00FB6A2D /* DataProvider.m */,
+				58F62BC118F426FA00AAA5D6 /* CurrentSettings.h */,
+				58F62BC218F426FA00AAA5D6 /* CurrentSettings.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -615,6 +620,7 @@
 				5801845818F151F600121B36 /* UIMultiColumnTitleView.m in Sources */,
 				58F2ED4D18EEAE3A00FB6A2D /* DataProvider.m in Sources */,
 				58F5DF8618F27180003CE7D9 /* UIEditorTextFieldView.m in Sources */,
+				58F62BC318F426FA00AAA5D6 /* CurrentSettings.m in Sources */,
 				58FC0EB818EDB19A0079637F /* UIEmoticonsChooserView.m in Sources */,
 				5804B60018F0548B00AA6CB1 /* EmoticonsTableManager.m in Sources */,
 				58F5DF8018F26FAC003CE7D9 /* UIEditorView.m in Sources */,
