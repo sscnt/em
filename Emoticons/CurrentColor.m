@@ -115,4 +115,13 @@ static CurrentColor* sharedCurrentColor = nil;
     return [UIColor colorWithRed:204.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
 }
 
+#pragma mark hint
+
++ (UIColor*)hintArrowColor
+{
+    return [UIColor colorWithRed:204.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
+}
+
+
+
 @end

@@ -31,6 +31,7 @@
 		58F66CE318EE8B0F005FCC8C /* favorites.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE218EE8B0F005FCC8C /* favorites.sqlite */; };
 		58F66CE518EE8C6A005FCC8C /* updates.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58F66CE418EE8C6A005FCC8C /* updates.sqlite */; };
 		58F8BABA18F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */; };
+		58FA061F18F53B54000AD2AD /* UIEditorHintArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA061E18F53B54000AD2AD /* UIEditorHintArrowView.m */; };
 		58FA8DE018EEB9FC0048A715 /* TableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8DDF18EEB9FC0048A715 /* TableManager.m */; };
 		58FA8DE418EEBF300048A715 /* ChildCategoriesTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA8DE318EEBF300048A715 /* ChildCategoriesTableManager.m */; };
 		58FB172F18ED5E2A009D8BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB172E18ED5E2A009D8BFB /* Foundation.framework */; };
@@ -122,6 +123,9 @@
 		58F66CE418EE8C6A005FCC8C /* updates.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = updates.sqlite; sourceTree = "<group>"; };
 		58F8BAB818F2ED2E000217D2 /* UIEditorDraggableEmoticonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorDraggableEmoticonView.h; sourceTree = "<group>"; };
 		58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorDraggableEmoticonView.m; sourceTree = "<group>"; };
+		58FA061D18F53B54000AD2AD /* UIEditorHintArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorHintArrowView.h; sourceTree = "<group>"; };
+		58FA061E18F53B54000AD2AD /* UIEditorHintArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorHintArrowView.m; sourceTree = "<group>"; };
+		58FA062018F54332000AD2AD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		58FA8DDE18EEB9FC0048A715 /* TableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableManager.h; sourceTree = "<group>"; };
 		58FA8DDF18EEB9FC0048A715 /* TableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableManager.m; sourceTree = "<group>"; };
 		58FA8DE218EEBF300048A715 /* ChildCategoriesTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildCategoriesTableManager.h; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				58F5DF8518F27180003CE7D9 /* UIEditorTextFieldView.m */,
 				58F8BAB818F2ED2E000217D2 /* UIEditorDraggableEmoticonView.h */,
 				58F8BAB918F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m */,
+				58FA061D18F53B54000AD2AD /* UIEditorHintArrowView.h */,
+				58FA061E18F53B54000AD2AD /* UIEditorHintArrowView.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 		58FB172D18ED5E2A009D8BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58FA062018F54332000AD2AD /* CoreText.framework */,
 				58FC0E9B18EDA9A60079637F /* Security.framework */,
 				58F2DB6F18ED7EB40018E582 /* libsqlite3.0.dylib */,
 				58FB172E18ED5E2A009D8BFB /* Foundation.framework */,
@@ -614,6 +621,7 @@
 				58078BDD18EF14D000AC301E /* EmoticonObject.m in Sources */,
 				58F8BABA18F2ED2E000217D2 /* UIEditorDraggableEmoticonView.m in Sources */,
 				58FBA25F18EDBA8400A68C26 /* UIBackgroundView.m in Sources */,
+				58FA061F18F53B54000AD2AD /* UIEditorHintArrowView.m in Sources */,
 				58FB173B18ED5E2A009D8BFB /* main.m in Sources */,
 				58F2ED5118EEB3EF00FB6A2D /* ParentCategoriesTableManager.m in Sources */,
 				58FC0EAD18EDAA1C0079637F /* FMDatabase.m in Sources */,

@@ -32,4 +32,6 @@
 + (UIColor*)draggableEmoticonViewKnobColor;
 + (UIColor*)draggableEmoticonViewKnobShadowColor;
 
++ (UIColor*)hintArrowColor;
+
 @end

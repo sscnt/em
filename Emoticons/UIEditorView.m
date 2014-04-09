@@ -32,6 +32,10 @@
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDraggableEmoticonViewDrag:)];
         [_draggableEmoticonView addGestureRecognizer:panGestureRecognizer];
         
+        //// Hint
+        _hintArrowView = [[UIEditorHintArrowView alloc] initWithFrame:CGRectMake(0.0f, _textBoxView.frame.size.height / 2.0f, frame.size.width, _draggableEmoticonView.center.y - _textBoxView.frame.size.height / 2.0f)];
+        [self addSubview:_hintArrowView];
+        
         _caretPoint = CGPointMake(0.0f, 0.0f);
     }
     return self;

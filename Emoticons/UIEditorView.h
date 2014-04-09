@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIEditorTextboxView.h"
 #import "UIEditorDraggableEmoticonView.h"
+#import "UIEditorHintArrowView.h"
 
 @protocol UIEditorViewDelegate <NSObject>
 
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) NSString* placeholder;
 @property (nonatomic, strong) UIEditorDraggableEmoticonView* draggableEmoticonView;
 @property (nonatomic, assign) CGPoint draggableEditorViewDefaultPosition;
+@property (nonatomic, strong) UIEditorHintArrowView* hintArrowView;
 
 - (void)showKeyboardIfNeeded;
 - (void)keyboardDidShow:(NSNotification*)note;

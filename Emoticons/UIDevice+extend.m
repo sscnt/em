@@ -50,7 +50,33 @@
 {
     NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
     NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
-    if (iOsVersionMajor == 7)
+    if (iOsVersionMajor >= 7)
+    {
+        return NO;
+    }
+    if (iOsVersionMajor < 6)
+    {
+        return NO;
+    }
+    return YES;
+}
+
++ (BOOL)underIOS7
+{
+    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+    if (iOsVersionMajor < 7)
+    {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isIOS5
+{
+    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+    if (iOsVersionMajor >= 6)
     {
         return NO;
     }

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-    if([UIDevice isIOS6]){
+    if([UIDevice underIOS7]){
         [UIApplication sharedApplication].statusBarHidden = NO;
     }
     [super viewDidLoad];

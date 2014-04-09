@@ -80,13 +80,13 @@
     
     //// Bezier Drawing
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-    [bezierPath moveToPoint: CGPointMake(x + 13, 21)];
-    [bezierPath addLineToPoint: CGPointMake(x + 32, 21)];
+    [bezierPath moveToPoint: CGPointMake(x + 13.5, 21.5)];
+    [bezierPath addLineToPoint: CGPointMake(x + 32, 21.5)];
     [bezierPath addLineToPoint: CGPointMake(x + 32, 22)];
     [bezierPath addLineToPoint: CGPointMake(x + 14, 22)];
     [bezierPath addLineToPoint: CGPointMake(x + 14, 24)];
-    [bezierPath addLineToPoint: CGPointMake(x + 13, 24)];
-    [bezierPath addLineToPoint: CGPointMake(x + 13, 21)];
+    [bezierPath addLineToPoint: CGPointMake(x + 13.5, 24)];
+    [bezierPath addLineToPoint: CGPointMake(x + 13.5, 21.5)];
     [bezierPath closePath];
     [color2 setFill];
     [bezierPath fill];

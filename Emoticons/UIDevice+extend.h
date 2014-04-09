@@ -23,6 +23,8 @@ enum {
 
 + (UIDeviceResolution)resolution;
 + (BOOL)isIOS6;
++ (BOOL)isIOS5;
++ (BOOL)underIOS7;
 + (BOOL)isiPad;
 + (BOOL)underIPhone5s;
 + (BOOL)canOpenInstagram;
