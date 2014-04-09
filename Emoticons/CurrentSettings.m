@@ -35,6 +35,7 @@ static CurrentSettings* sharedCurrentSettings = nil;
 	return self;  // シングルトン状態を保持するため何もせず self を返す
 }
 
+
 #pragma mark text
 
 + (CGFloat)textSizeForEditor
@@ -45,6 +46,11 @@ static CurrentSettings* sharedCurrentSettings = nil;
 + (UIFont*)fontForEditor
 {
     return [UIFont systemFontOfSize:[CurrentSettings textSizeForEditor]];
+}
+
++ (BOOL)showCursorWhenDragging
+{
+    return NO;
 }
 
 @end

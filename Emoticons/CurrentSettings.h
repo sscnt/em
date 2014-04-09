@@ -12,5 +12,6 @@
 
 + (CGFloat)textSizeForEditor;
 + (UIFont*)fontForEditor;
++ (BOOL)showCursorWhenDragging;
 
 @end

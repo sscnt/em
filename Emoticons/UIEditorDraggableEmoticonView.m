@@ -66,7 +66,74 @@
     [[CurrentColor draggableEmoticonViewBgColor] setFill];
     [roundedRectanglePath fill];
     
+    //// Color Declarations
+    UIColor* color = [CurrentColor draggableEmoticonViewKnobColor];
+    UIColor* color2 = [CurrentColor draggableEmoticonViewKnobShadowColor];
     
+    CGFloat x = rect.size.width - 49.0f;
+    
+    //// Rectangle Drawing
+    UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(x + 14, 22, 18, 2)];
+    [color setFill];
+    [rectanglePath fill];
+    
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(x + 13, 21)];
+    [bezierPath addLineToPoint: CGPointMake(x + 32, 21)];
+    [bezierPath addLineToPoint: CGPointMake(x + 32, 22)];
+    [bezierPath addLineToPoint: CGPointMake(x + 14, 22)];
+    [bezierPath addLineToPoint: CGPointMake(x + 14, 24)];
+    [bezierPath addLineToPoint: CGPointMake(x + 13, 24)];
+    [bezierPath addLineToPoint: CGPointMake(x + 13, 21)];
+    [bezierPath closePath];
+    [color2 setFill];
+    [bezierPath fill];
+    
+    
+    //// Rectangle 2 Drawing
+    UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(x + 14, 29, 18, 2)];
+    [color setFill];
+    [rectangle2Path fill];
+    
+    
+    //// Bezier 2 Drawing
+    UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+    [bezier2Path moveToPoint: CGPointMake(x + 13, 28)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 32, 28)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 32, 29)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 14, 29)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 14, 31)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 13, 31)];
+    [bezier2Path addLineToPoint: CGPointMake(x + 13, 28)];
+    [bezier2Path closePath];
+    [color2 setFill];
+    [bezier2Path fill];
+    
+    
+    //// Rectangle 3 Drawing
+    UIBezierPath* rectangle3Path = [UIBezierPath bezierPathWithRect: CGRectMake(x + 14, 15, 18, 2)];
+    [color setFill];
+    [rectangle3Path fill];
+    
+    
+    //// Bezier 3 Drawing
+    UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
+    [bezier3Path moveToPoint: CGPointMake(x + 13, 14)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 32, 14)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 32, 15)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 14, 15)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 14, 17)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 13, 17)];
+    [bezier3Path addLineToPoint: CGPointMake(x + 13, 14)];
+    [bezier3Path closePath];
+    [color2 setFill];
+    [bezier3Path fill];
+    
+    
+    
+
 }
 
 

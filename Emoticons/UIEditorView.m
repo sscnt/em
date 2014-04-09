@@ -131,7 +131,8 @@
     
     if([_textBoxView isFingerOverTextField:boxLocal] || [_textBoxView isFingerOverTextField:shiftedFingerPoint]){
         [_textBoxView togglePreview:YES];
-        [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
+        NSString* insertText = ([CurrentSettings showCursorWhenDragging]) ? @"|" : _draggableEmoticonView.text;
+        [_textBoxView previewTextWithInsertingText:insertText];
     }else{
         [_textBoxView togglePreview:NO];
     }
