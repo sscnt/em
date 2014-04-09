@@ -89,6 +89,18 @@
     NSString * secondHalfString = [_textField.text substringFromIndex: range.location];
     _textField.scrollEnabled = NO;  // turn off scrolling or you'll get dizzy ... I promise
     
+    if ([secondHalfString length] > 0) {
+        NSString* lastText = [secondHalfString substringToIndex:1];
+        if ([lastText compare:@"\r"]) {
+            LOG(@"KAIGYOU!!");
+        }else{
+            secondHalfString = [secondHalfString stringByAppendingString:@"\r"];
+        }
+        
+    }else{
+        secondHalfString = @"\r";
+    }
+    
     _textField.text = [NSString stringWithFormat: @"%@%@%@", firstHalfString, text, secondHalfString];
     range.location += [text length];
     _textField.selectedRange = range;
@@ -169,7 +181,7 @@
 
 - (void)setText:(NSString *)text
 {
-    _textField.text = text;
+    _textField.text = [text stringByAppendingString:@"\r"];
 }
 
 - (void)setFingerPoint:(CGPoint)fingerPoint

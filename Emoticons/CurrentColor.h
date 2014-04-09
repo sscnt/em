@@ -28,4 +28,8 @@
 + (UIColor*)cellLightBorderColor;
 + (UIColor*)cellDarkBorderColor;
 
++ (UIColor*)draggableEmoticonViewBgColor;
++ (UIColor*)draggableEmoticonViewKnobColor;
++ (UIColor*)draggableEmoticonViewKnobShadowColor;
+
 @end

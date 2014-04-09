@@ -14,5 +14,6 @@
 }
 
 @property (nonatomic, strong) NSString* text;
+@property (nonatomic, assign) BOOL shadow;
 
 @end

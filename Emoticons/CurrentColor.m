@@ -98,4 +98,21 @@ static CurrentColor* sharedCurrentColor = nil;
     return [UIColor colorWithRed:204.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
 }
 
+#pragma mark Draggable
+
++ (UIColor*)draggableEmoticonViewBgColor
+{
+    return [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+}
+
++ (UIColor*)draggableEmoticonViewKnobColor
+{
+    return [UIColor colorWithRed:240.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1.0f];
+}
+
++ (UIColor*)draggableEmoticonViewKnobShadowColor
+{
+    return [UIColor colorWithRed:204.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1.0f];
+}
+
 @end

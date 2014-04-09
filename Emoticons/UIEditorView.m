@@ -70,14 +70,17 @@
 - (void)resetPositionOfDraggableEmoticonView
 {
     _draggableEmoticonView.userInteractionEnabled = NO;
+    _draggableEmoticonView.shadow = NO;
     __block UIEditorView* _self = self;
     
     [UIView animateWithDuration:0.20f
                      animations:^{
                          _self.draggableEmoticonView.frame = CGRectMake(_self.draggableEditorViewDefaultPosition.x, _self.draggableEditorViewDefaultPosition.y, _self.draggableEmoticonView.frame.size.width, _draggableEmoticonView.frame.size.height);
+                         _self.draggableEmoticonView.alpha = 1.0f;
                      }
                      completion:^(BOOL finished){
                          _self.draggableEmoticonView.userInteractionEnabled = YES;
+                         _self.draggableEmoticonView.shadow = YES;
                      }];
 
     
@@ -106,7 +109,7 @@
 
 - (void)didDraggableEmoticonViewDrag:(UIPanGestureRecognizer *)sender
 {
-    UIView *targetView = sender.view;
+    UIEditorDraggableEmoticonView *targetView = (UIEditorDraggableEmoticonView*)sender.view;
     CGPoint p = [sender translationInView:targetView];
     
     CGPoint movedPoint = CGPointMake(targetView.center.x + p.x, targetView.center.y + p.y);
@@ -126,7 +129,7 @@
     _textBoxView.fingerPoint = shiftedFingerPoint;
     
     
-    if([_textBoxView isFingerOverTextField:boxLocal]){
+    if([_textBoxView isFingerOverTextField:boxLocal] || [_textBoxView isFingerOverTextField:shiftedFingerPoint]){
         [_textBoxView togglePreview:YES];
         [_textBoxView previewTextWithInsertingText:_draggableEmoticonView.text];
     }else{
@@ -136,12 +139,14 @@
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
         {
+            targetView.shadow = NO;
+            targetView.alpha = 0.30f;
         }
             break;
         case UIGestureRecognizerStateEnded:
         {
             [_textBoxView togglePreview:NO];
-            if([_textBoxView isFingerOverTextField:boxLocal]){
+            if([_textBoxView isFingerOverTextField:boxLocal] || [_textBoxView isFingerOverTextField:shiftedFingerPoint]){
                 if([_textBoxView insertText:_draggableEmoticonView.text AtPoint:shiftedFingerPoint]){
                     [_textBoxView showKeyboard];
                     _caretPoint = shiftedFingerPoint;

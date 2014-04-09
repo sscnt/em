@@ -63,7 +63,7 @@
 - (void)layout
 {
     CGFloat titleHeight = 44.0f;
-    CGRect tableViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height - titleHeight);
+    CGRect tableViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, _visibleSize.height - titleHeight * 2.0f);
     CGRect titleViewFrame = CGRectMake(0.0f, 0.0f, _visibleSize.width, titleHeight);
     CGFloat titleLabelWidth = _visibleSize.width * 0.30f;
     CGSize titleViewContentsSize = CGSizeMake(titleLabelWidth * (CGFloat)_numberOfPages, titleHeight);
@@ -105,7 +105,6 @@
             [_titleView addTitleView:label];
         }
     }
-    
 }
 
 #pragma mark delegate
